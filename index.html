@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Kids Club | Inglés para Chicos y Adolescentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFFBF2;
+    --ink:#2E2A4A;
+    --amarillo:#FFC94A;
+    --amarillo-deep:#F5A623;
+    --verde:#5FC98D;
+    --verde-deep:#2FAE6E;
+    --celeste:#4FB4E8;
+    --celeste-deep:#2E93C9;
+    --violeta:#9B7EDE;
+    --violeta-deep:#7B57C9;
+    --whatsapp:#25D366;
+    --whatsapp-deep:#1DA851;
+    --card-shadow: 0 8px 24px rgba(46,42,74,0.10);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Inter',sans-serif;
+    font-weight:700;
+    line-height:1.15;
+    margin:0;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+  }
+  a{text-decoration:none;color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .hero .wrap > *, .about .wrap > *, .contact-grid > *, .track-path > *, .price-grid > *, .testimonial-grid > *, .package-table > *{min-width:0;}
+  .section{padding:88px 0;}
+  .eyebrow{
+    display:inline-block;
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    font-size:0.85rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:6px 16px;
+    border-radius:999px;
+    margin-bottom:18px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    font-size:1.05rem;
+    padding:14px 28px;
+    border-radius:999px;
+    border:none;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-whatsapp{
+    background:var(--whatsapp);
+    color:#fff;
+    box-shadow:0 6px 18px rgba(37,211,102,0.35);
+  }
+  .btn-whatsapp:hover{background:var(--whatsapp-deep);}
+  .btn-outline{
+    background:transparent;
+    border:2.5px solid var(--ink);
+    color:var(--ink);
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,251,242,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:2px solid rgba(46,42,74,0.06);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px;
+  }
+  .logo{font-family:'Poppins',sans-serif; font-weight:800; font-size:1.3rem;}
+  .logo span{color:var(--violeta-deep);}
+  nav .btn{padding:10px 20px; font-size:0.95rem;}
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:8px;
+  }
+  .hamburger span{
+    width:26px; height:3px;
+    background:var(--ink);
+    border-radius:2px;
+    transition:transform .2s ease, opacity .2s ease;
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .mobile-menu{
+    display:none;
+    flex-direction:column;
+    gap:2px;
+    background:#fff;
+    padding:0 24px 18px;
+    border-bottom:2px solid rgba(46,42,74,0.06);
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{
+    padding:12px 0;
+    font-weight:700;
+    border-bottom:1px solid rgba(46,42,74,0.08);
+  }
+
+  /* ---------- MODAL CLASE DE PRUEBA ---------- */
+  .modal-overlay{
+    display:none;
+    position:fixed; inset:0;
+    background:rgba(46,42,74,0.55);
+    z-index:200;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal-box{
+    background:#fff;
+    border-radius:24px;
+    max-width:440px;
+    width:100%;
+    padding:32px;
+    max-height:90vh;
+    overflow-y:auto;
+    position:relative;
+  }
+  .modal-close{
+    position:absolute; top:16px; right:16px;
+    background:var(--cream);
+    border:none;
+    width:34px; height:34px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:1.1rem;
+  }
+  .modal-box h3{font-size:1.3rem; margin-bottom:6px;}
+  .modal-box p{font-size:0.92rem; margin-bottom:20px; opacity:0.8;}
+  .modal-box form{padding:0; box-shadow:none; gap:14px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:72px 0 60px;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:48px;
+    align-items:center;
+    position:relative;
+    z-index:2;
+  }
+  .hero h1{font-size:3rem;}
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(180deg, transparent 60%, var(--amarillo) 60%);
+  }
+  .hero p.lead{
+    font-size:1.15rem;
+    margin:22px 0 30px;
+    max-width:46ch;
+  }
+  .trust-strip{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:22px;
+    font-weight:600;
+    font-size:0.92rem;
+    opacity:0.85;
+  }
+  .trust-stars{ font-size:1rem; letter-spacing:2px; }
+  .hero-blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(2px);
+    opacity:0.35;
+    z-index:0;
+  }
+  .hero-illustration{
+    position:relative;
+    aspect-ratio:1/1;
+    border-radius:32px;
+    background:linear-gradient(135deg, var(--celeste) 0%, var(--violeta) 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .hero-illustration .placeholder-label{
+    position:absolute; bottom:16px; left:16px; right:16px;
+    background:rgba(255,255,255,0.85);
+    border-radius:12px;
+    padding:8px 14px;
+    font-size:0.8rem;
+    font-weight:600;
+    color:var(--violeta-deep);
+    text-align:center;
+  }
+  .stars{position:absolute; inset:0;}
+
+  /* ---------- SOBRE MI ---------- */
+  .about{background:#fff;}
+  .about .wrap{
+    display:grid;
+    grid-template-columns:0.8fr 1.2fr;
+    gap:56px;
+    align-items:center;
+  }
+  .photo-frame{
+    aspect-ratio:4/5;
+    border-radius:28px;
+    background:repeating-linear-gradient(135deg, #F1EDFF, #F1EDFF 12px, #E8E2FF 12px, #E8E2FF 24px);
+    border:3px dashed var(--violeta);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:var(--violeta-deep);
+    font-weight:600;
+    padding:24px;
+  }
+  .credentials-marquee{
+    overflow:hidden;
+    width:100%;
+    margin:22px 0 26px;
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .credentials-track{
+    display:flex;
+    gap:10px;
+    width:max-content;
+    animation:credentials-scroll 14s linear infinite;
+  }
+  .credentials-marquee:hover .credentials-track,
+  .credentials-marquee:active .credentials-track{
+    animation-play-state:paused;
+  }
+  @keyframes credentials-scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .credentials-track{ animation:none; }
+  }
+  .credential-pill{
+    display:flex; align-items:center; gap:8px;
+    background:var(--cream);
+    border:2px solid rgba(46,42,74,0.08);
+    padding:9px 16px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:0.92rem;
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+  .about-points{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-top:8px;
+  }
+  .about-point{
+    background:var(--cream);
+    border-radius:16px;
+    padding:16px 18px;
+    font-weight:600;
+    font-size:0.95rem;
+    display:flex; gap:10px; align-items:flex-start;
+  }
+
+  /* ---------- TRACKS / CAMINO ---------- */
+  .tracks{position:relative;}
+  .section-head{text-align:center; max-width:640px; margin:0 auto 48px;}
+  .subsection-head{margin:40px 0 20px;}
+  .subsection-head.centered{text-align:center;}
+  .track-path{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:28px;
+  }
+  .track-path::before{
+    content:"";
+    position:absolute;
+    top:56px; left:6%; right:6%;
+    height:6px;
+    background:repeating-linear-gradient(90deg, var(--ink) 0 10px, transparent 10px 20px);
+    opacity:0.15;
+    z-index:0;
+  }
+  .track-card{
+    position:relative; z-index:1;
+    background:#fff;
+    border-radius:22px;
+    padding:26px 20px 22px;
+    box-shadow:var(--card-shadow);
+    border-top:8px solid var(--track-color);
+    transition:transform .18s ease;
+  }
+  .track-card:hover{transform:translateY(-6px);}
+  .track-milestone{
+    width:44px; height:44px;
+    border-radius:50%;
+    background:var(--track-color);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  .track-card h3{font-size:1.2rem; margin-bottom:4px;}
+  .track-age{
+    font-size:0.85rem; font-weight:700; opacity:0.6; margin-bottom:10px;
+  }
+  .track-desc{font-size:0.92rem;}
+  .track-toggle{
+    margin-top:14px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:0;
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:0.85rem;
+    color:var(--track-color);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .track-toggle-icon{
+    transition:transform .2s ease;
+    font-size:1.1rem;
+    line-height:1;
+  }
+  .track-detail{
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
+    transition:max-height .3s ease, opacity .3s ease, margin-top .3s ease;
+  }
+  .track-detail ul{
+    margin:0; padding-left:18px;
+    font-size:0.85rem;
+    display:flex; flex-direction:column; gap:6px;
+  }
+  .track-detail-note{
+    font-size:0.75rem;
+    opacity:0.55;
+    margin:8px 0 0;
+    font-style:italic;
+  }
+  .track-detail-cta{
+    margin-top:14px;
+    background:var(--track-color);
+    color:#fff;
+    border:none;
+    border-radius:999px;
+    padding:10px 18px;
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:0.8rem;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .track-card.open .track-detail{
+    max-height:420px;
+    opacity:1;
+    margin-top:14px;
+  }
+  .track-card.open .track-toggle-icon{ transform:rotate(45deg); }
+  @media (hover:hover) and (pointer:fine){
+    .track-card:hover .track-detail{
+      max-height:420px;
+      opacity:1;
+      margin-top:14px;
+    }
+    .track-card:hover .track-toggle-icon{ transform:rotate(45deg); }
+  }
+
+  /* ---------- PRECIOS ---------- */
+  .pricing{background:var(--cream);}
+  .pricing .about-point{ background:#fff; box-shadow:0 2px 8px rgba(46,42,74,0.06); }
+
+  /* ---------- TABLA DE TIPOS DE PAQUETE ---------- */
+  .package-table{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    border:2px solid rgba(46,42,74,0.14);
+    border-radius:16px;
+    overflow:hidden;
+    background:#fff;
+  }
+  .package-cell{
+    padding:16px 18px;
+    font-weight:600;
+    font-size:0.9rem;
+    border-right:2px solid rgba(46,42,74,0.14);
+    border-bottom:2px solid rgba(46,42,74,0.14);
+  }
+  .package-cell:nth-child(2n){ border-right:none; }
+  .package-cell:nth-child(n+3){ border-bottom:none; }
+  .price-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    margin-top:0;
+  }
+  .price-card{
+    position:relative;
+    border-radius:22px;
+    padding:32px 26px 26px;
+    background:#fff;
+    box-shadow:var(--card-shadow);
+    overflow:hidden;
+  }
+  .price-card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:8px;
+    background:var(--price-bar, var(--amarillo-deep));
+  }
+  .price-card h3{font-size:1.15rem; margin-bottom:18px;}
+  .price-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:12px 0;
+    border-bottom:1.5px dashed rgba(46,42,74,0.15);
+  }
+  .price-row:last-child{border-bottom:none;}
+  .price-tag{
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:1.3rem;
+  }
+  .price-tag.deal{color:var(--verde-deep);}
+  .price-note{
+    font-size:0.85rem;
+    opacity:0.75;
+    margin-top:6px;
+  }
+  .free-banner{
+    display:flex; align-items:center; gap:16px;
+    background:linear-gradient(90deg, var(--amarillo), var(--verde));
+    border-radius:20px;
+    padding:20px 26px;
+    margin-bottom:36px;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .free-banner .tag{
+    background:#fff; border-radius:999px; padding:8px 16px;
+    font-family:'Poppins',sans-serif; white-space:nowrap;
+  }
+  .sibling-promo{
+    margin-top:24px;
+    background:var(--violeta);
+    color:#fff;
+    border-radius:20px;
+    padding:20px 26px;
+    display:flex; align-items:center; gap:14px;
+    font-weight:600;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:760px; margin:56px auto 0;}
+  .faq-item{
+    border-bottom:2px solid rgba(46,42,74,0.08);
+  }
+  .faq-q{
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    padding:20px 4px;
+    font-family:'Poppins',sans-serif;
+    font-size:1.02rem;
+    font-weight:600;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+    color:var(--ink);
+  }
+  .faq-icon{transition:transform .2s ease; font-size:1.3rem; color:var(--violeta-deep);}
+  .faq-item.open .faq-icon{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .25s ease;
+    font-size:0.95rem;
+    padding:0 4px;
+  }
+  .faq-item.open .faq-a{padding-bottom:18px;}
+
+  /* ---------- CONTACTO ---------- */
+  .contact{background:transparent;}
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:flex-start;
+  }
+  form{
+    background:#fff;
+    border-radius:24px;
+    padding:32px;
+    box-shadow:var(--card-shadow);
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  label{font-weight:700; font-size:0.9rem;}
+  input, select, textarea{
+    font-family:'Poppins',sans-serif;
+    font-size:0.98rem;
+    padding:12px 14px;
+    border-radius:12px;
+    border:2px solid rgba(46,42,74,0.12);
+    background:var(--cream);
+  }
+  input:focus, select:focus, textarea:focus{
+    outline:3px solid var(--celeste);
+    outline-offset:1px;
+  }
+  textarea{resize:vertical; min-height:90px;}
+  .contact-side-card{
+    background:var(--ink);
+    color:#fff;
+    border-radius:24px;
+    padding:32px;
+  }
+  .contact-side-card h3{color:#fff; font-size:1.3rem; margin-bottom:12px;}
+  .contact-side-card p{opacity:0.85; margin-bottom:22px;}
+
+  .decorated-tail{ position:relative; overflow:hidden; }
+  .school-support-card{
+    background:linear-gradient(135deg, #EAF6FF 0%, #F1EDFF 100%);
+    border-radius:28px;
+    padding:40px;
+    border:2px solid rgba(46,42,74,0.06);
+  }
+  .school-support-text p{ margin:14px 0 20px; max-width:62ch; }
+  .school-support-list{
+    list-style:none;
+    margin:0 0 24px;
+    padding:0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    font-weight:600;
+    font-size:0.92rem;
+  }
+
+  /* ---------- EXTRAS ---------- */
+  .extras-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+  }
+  .extra-chip{
+    background:#fff;
+    border:2px solid rgba(46,42,74,0.08);
+    border-radius:16px;
+    padding:16px 18px;
+    font-size:0.88rem;
+    font-weight:600;
+  }
+
+  /* ---------- TESTIMONIOS ---------- */
+  .testimonial-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .testimonial-card{
+    background:#fff;
+    border-radius:22px;
+    padding:26px 22px;
+    box-shadow:var(--card-shadow);
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .testimonial-stars{ font-size:0.95rem; letter-spacing:2px; }
+  .testimonial-quote{
+    font-size:0.95rem;
+    font-style:italic;
+    opacity:0.85;
+    flex-grow:1;
+  }
+  .testimonial-author{ display:flex; align-items:center; gap:12px; }
+  .testimonial-avatar{
+    width:42px; height:42px;
+    border-radius:50%;
+    background:var(--cream);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.2rem;
+    flex-shrink:0;
+  }
+  .testimonial-name{ font-weight:700; font-size:0.9rem; }
+  .testimonial-detail{ font-size:0.8rem; opacity:0.65; }
+
+  /* ---------- WHATSAPP FLOAT ---------- */
+  .wa-float{
+    position:fixed;
+    right:22px; bottom:22px;
+    z-index:100;
+    background:var(--whatsapp);
+    color:#fff;
+    width:64px; height:64px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 22px rgba(37,211,102,0.45);
+    animation:pulse 2.4s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 8px 22px rgba(37,211,102,0.45);}
+    50%{box-shadow:0 8px 22px rgba(37,211,102,0.7), 0 0 0 8px rgba(37,211,102,0.12);}
+    100%{box-shadow:0 8px 22px rgba(37,211,102,0.45);}
+  }
+  .wa-float svg{width:30px; height:30px;}
+
+  footer{
+    text-align:center;
+    padding:32px 0 100px;
+    font-size:0.85rem;
+    opacity:0.6;
+  }
+
+  @media (max-width: 860px){
+    .hero .wrap, .about .wrap, .contact-grid{grid-template-columns:1fr;}
+    .hero-illustration{order:-1;}
+    .about .photo-frame{order:-1; max-width:280px; margin:0 auto;}
+    .track-path{grid-template-columns:1fr 1fr;}
+    .track-path::before{display:none;}
+    .price-grid{grid-template-columns:1fr;}
+    .testimonial-grid{grid-template-columns:1fr;}
+    .school-support-card{padding:26px;}
+    .school-support-list{grid-template-columns:1fr;}
+    .extras-grid{grid-template-columns:1fr 1fr;}
+    .about-points{grid-template-columns:1fr 1fr; gap:10px;}
+    .about-point{font-size:0.82rem; padding:12px 14px;}
+    .package-table{grid-template-columns:1fr;}
+    .package-cell{border-right:none !important;}
+    .package-cell:nth-child(n+3){border-bottom:2px solid rgba(46,42,74,0.14);}
+    .package-cell:last-child{border-bottom:none !important;}
+    .credential-pill{padding:8px 14px; font-size:0.82rem;}
+    .hero h1{font-size:2.3rem;}
+    .hamburger{display:flex;}
+    .nav-links .btn{display:none;}
+  }
+  @media (max-width:520px){
+    .track-path{grid-template-columns:1fr;}
+    .section{padding:64px 0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .wa-float{animation:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .reveal-stagger.visible > *{
+    transition-delay:calc(var(--i,0) * 90ms);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">English<span>·</span>Kids Club</div>
+    <div class="nav-links">
+      <a href="#contacto" class="btn btn-outline" style="border-width:2px;">Escribime</a>
+    </div>
+    <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#niveles">Niveles</a>
+    <a href="#apoyo-escolar">Apoyo Escolar</a>
+    <a href="#precios">Paquetes</a>
+    <a href="#contacto">Formulario</a>
+    <a href="https://wa.me/541151268940" target="_blank" rel="noopener">Contacto</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-blob" style="width:340px;height:340px; background:var(--amarillo); top:-120px; left:-100px;"></div>
+  <div class="hero-blob" style="width:220px;height:220px; background:var(--celeste); bottom:-80px; left:38%;"></div>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow" style="background:var(--amarillo);">Para infancias y adolescentes 🎈</span>
+      <h1>Inglés que tus hijos <em>van a querer</em> aprender</h1>
+      <p class="lead">Clases virtuales y presenciales, con juegos, canciones y mucha paciencia — para que aprender inglés sea una aventura, no una obligación.</p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <button type="button" class="btn btn-whatsapp" onclick="openTrialModal()">
+          🎁 Quiero mi clase de prueba gratis
+        </button>
+      </div>
+      <div class="trust-strip">
+        <span class="trust-stars">⭐⭐⭐⭐⭐</span>
+        <span>Clases personalizadas, adaptadas a las necesidades de cada niño/a.</span>
+      </div>
+    </div>
+    <div class="hero-illustration">
+      <!-- Ilustración placeholder: reemplazar por arte final (nubes/estrellas/chicos con libros) -->
+      <svg viewBox="0 0 300 300" width="70%">
+        <circle cx="150" cy="120" r="70" fill="#FFFFFF" opacity="0.9"/>
+        <circle cx="90" cy="80" r="26" fill="#FFC94A"/>
+        <circle cx="230" cy="70" r="18" fill="#FFFFFF" opacity="0.7"/>
+        <path d="M110 190 q40 -30 80 0 q40 30 80 0" stroke="#fff" stroke-width="6" fill="none" opacity="0.6"/>
+        <text x="150" y="130" font-size="52" text-anchor="middle" font-family="sans-serif">📚</text>
+      </svg> 
+  </div>
+</header>
+
+<!-- SOBRE MI -->
+<section class="about section" id="sobre-mi">
+  <div class="wrap">
+    <div class="photo-frame">
+      [ ESPACIO PARA FOTO REAL DE CAMILA ]<br>(reemplazar este bloque por una foto tuya)
+    </div>
+    <div>
+      <span class="eyebrow" style="background:var(--verde);">Sobre mí</span>
+      <h2 style="font-size:2rem; margin-bottom:16px;">Tutorias que se enfocan en el aprendizaje divertido</h2>
+      <p>Soy Camila, tutora de inglés con experiencia trabajando con chicos y adolescentes. Sé que cada edad aprende distinto: los más chiquitos necesitan juego y repetición, los adolescentes necesitan sentirse escuchados y ver que el inglés les sirve para algo real (series, música, videojuegos, redes) además de aprobar exámenes.</p>
+      <p>Adapto cada clase a la edad, el nivel y los intereses de tu hijo/a, y te mantengo al tanto de sus avances en cada etapa.</p>
+
+      <div class="credentials-marquee">
+        <div class="credentials-track">
+          <span class="credential-pill">✅ Tutora en Preply</span>
+          <span class="credential-pill">✅ Tutora en italki</span>
+          <span class="credential-pill">🎓 First Certificate (FCE)</span>
+          <span class="credential-pill">🎓 TELF nivel 6</span>
+          <span class="credential-pill" aria-hidden="true">✅ Tutora en Preply</span>
+          <span class="credential-pill" aria-hidden="true">✅ Tutora en italki</span>
+          <span class="credential-pill" aria-hidden="true">🎓 First Certificate (FCE)</span>
+          <span class="credential-pill" aria-hidden="true">🎓 TELF nivel 6</span>
+        </div>
+      </div>
+
+      <div class="about-points">
+        <div class="about-point">🎨 Clases dinámicas con juegos y canciones</div>
+        <div class="about-point">👧🧒 Grupos por edad y nivel</div>
+        <div class="about-point">📱 Virtual o presencial (en CABA)</div>
+        <div class="about-point">📊 Seguimiento compartido con los padres</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACKS -->
+<section class="tracks section" id="niveles">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" style="background:var(--celeste);">El camino de aprendizaje</span>
+      <h2 style="font-size:2rem;">Un nivel para cada edad</h2>
+      <p style="margin-top:10px; opacity:0.75;">Como en un juego: cada track tiene su propio ritmo y desafíos.</p>
+    </div>
+    <div class="track-path">
+      <div class="track-card" style="--track-color:var(--amarillo-deep);">
+        <div class="track-milestone">1</div>
+        <h3>Primeros Pasos</h3>
+        <div class="track-age">4–6 años · clases de 50 min</div>
+        <p class="track-desc">Vocabulario básico, juego y canciones. Su primer contacto con el inglés, sin presión.</p>
+        <button type="button" class="track-toggle">Qué incluye <span class="track-toggle-icon">+</span></button>
+        <div class="track-detail">
+          <ul>
+            <li>Clase de prueba única (sin nivelación formal: acá todos arrancan desde el juego)</li>
+            <li>Mensual — 1 o 2 clases por semana, con reporte breve de progreso mensual</li>
+            <li>Trimestral "Mi Primer Inglés" (12 clases por bloques temáticos + diploma)</li>
+            <li>Apoyo escolar a demanda (refuerzo del inglés del jardín/colegio)</li>
+          </ul>
+          <button type="button" class="track-detail-cta" onclick="openTrialModal()">🎁 Reservar clase de prueba gratis</button>
+        </div>
+      </div>
+      <div class="track-card" style="--track-color:var(--verde-deep);">
+        <div class="track-milestone">2</div>
+        <h3>Exploradores</h3>
+        <div class="track-age">7–9 años · clases de 60 min</div>
+        <p class="track-desc">Frases simples, lectura inicial y dinámicas grupales para perder la timidez.</p>
+        <button type="button" class="track-toggle">Qué incluye <span class="track-toggle-icon">+</span></button>
+        <div class="track-detail">
+          <ul>
+            <li>Clase de prueba que también funciona como nivelación real</li>
+            <li>Mensual — 1 o 2 clases por semana, con hojas de actividades semanales</li>
+            <li>Trimestral "Explorando el Inglés" (12 clases por bloques)</li>
+            <li>Camino de certificación Cambridge Starters (opcional, sin presión de nota)</li>
+            <li>Apoyo escolar a demanda</li>
+          </ul>
+          <button type="button" class="track-detail-cta" onclick="openTrialModal()">🎁 Reservar clase de prueba/nivelación gratis</button>
+        </div>
+      </div>
+      <div class="track-card" style="--track-color:var(--celeste-deep);">
+        <div class="track-milestone">3</div>
+        <h3>Aventureros</h3>
+        <div class="track-age">10–12 años · clases de 60 min</div>
+        <p class="track-desc">Gramática progresiva y conversación guiada, con temas que les interesan de verdad.</p>
+        <button type="button" class="track-toggle">Qué incluye <span class="track-toggle-icon">+</span></button>
+        <div class="track-detail">
+          <ul>
+            <li>Clase de prueba + nivelación real antes de elegir paquete</li>
+            <li>Mensual — 1 o 2 clases por semana</li>
+            <li>Trimestral "Aventura en Inglés" (12 clases + proyecto final)</li>
+            <li>Intensivo pre-examen (4 u 8 clases) para Movers/Flyers</li>
+            <li>Camino de certificación Cambridge Movers/Flyers</li>
+            <li>Apoyo escolar a demanda</li>
+          </ul>
+          <button type="button" class="track-detail-cta" onclick="openTrialModal()">🎁 Reservar clase de prueba/nivelación gratis</button>
+        </div>
+      </div>
+      <div class="track-card" style="--track-color:var(--violeta-deep);">
+        <div class="track-milestone">4</div>
+        <h3>Teens</h3>
+        <div class="track-age">13–17 años · clases de 60 min</div>
+        <p class="track-desc">Conversación real, escritura y preparación para exámenes internacionales.</p>
+        <button type="button" class="track-toggle">Qué incluye <span class="track-toggle-icon">+</span></button>
+        <div class="track-detail">
+          <ul>
+            <li>Clase de prueba + nivelación: define si el objetivo es examen o conversación</li>
+            <li>Mensual — 1 o 2 clases por semana</li>
+            <li>Trimestral "Teens Exam Prep" (24 clases + 3 simulacros para First/PET/TELF)</li>
+            <li>Teens Talk Club (4 clases/mes, conversación sin examen)</li>
+            <li>Intensivo pre-examen (4 u 8 clases) + apoyo escolar a demanda</li>
+          </ul>
+          <button type="button" class="track-detail-cta" onclick="openTrialModal()">🎁 Reservar clase de prueba/nivelación gratis</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APOYO ESCOLAR -->
+<section class="school-support-section section" id="apoyo-escolar">
+  <div class="wrap">
+    <div class="school-support-card">
+      <div class="school-support-text">
+        <span class="eyebrow" style="background:var(--celeste);">Para todos los niveles</span>
+        <h2 style="font-size:1.8rem;">Apoyo escolar: el inglés del colegio, reforzado</h2>
+        <p>Para chicos y adolescentes que ya tienen inglés curricular y necesitan una mano puntual: tareas, redacciones y evaluaciones del colegio (no exámenes internacionales). A demanda, sin atarse a un paquete fijo.</p>
+        <ul class="school-support-list">
+          <li>✏️ Ayuda con tareas y trabajos prácticos</li>
+          <li>📖 Repaso antes de evaluaciones del colegio</li>
+          <li>📝 Corrección de essays y writing (Aventureros/Teens)</li>
+          <li>🔤 Refuerzo de vocabulario y estructuras vistas en clase</li>
+        </ul>
+        <a href="https://wa.me/541151268940?text=Hola%20Camila!%20Quiero%20consultar%20por%20apoyo%20escolar%20para%20mi%20hijo/a" class="btn btn-whatsapp" target="_blank" rel="noopener">
+          💬 Consultar apoyo escolar
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRAS -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" style="background:var(--amarillo);">Y también</span>
+      <h2 style="font-size:1.6rem;">Extras que suman al proceso</h2>
+    </div>
+    <div class="extras-grid">
+      <div class="extra-chip">🎓 Preparación Cambridge Young Learners y PET/First for Schools</div>
+      <div class="extra-chip">👫 Clases grupales chicas (2–3 chicos) con descuento</div>
+      <div class="extra-chip">📚 Club de lectura mensual por nivel</div>
+      <div class="extra-chip">🏅 Insignias digitales por logros</div>
+      <div class="extra-chip">📧 Newsletter mensual con tips para la casa</div>
+      <div class="extra-chip">🤝 Descuento por recomendar a otra familia</div>
+    </div>
+  </div>
+</section>
+
+<!--
+  TESTIMONIOS - BLOQUE OCULTO POR AHORA
+  Se deja guardado como comentario para reutilizarlo más adelante.
+<section class="testimonials section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" style="background:var(--violeta); color:#fff;">Lo que dicen las familias</span>
+      <h2 style="font-size:2rem;">Confían en nosotros</h2>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-quote">[ Espacio para testimonio real de un padre/madre — reemplazar ]</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">😊</div>
+          <div>
+            <div class="testimonial-name">[ Nombre del padre/madre ]</div>
+            <div class="testimonial-detail">[ Track / edad del hijo/a ]</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-quote">[ Espacio para testimonio real de un padre/madre — reemplazar ]</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">😊</div>
+          <div>
+            <div class="testimonial-name">[ Nombre del padre/madre ]</div>
+            <div class="testimonial-detail">[ Track / edad del hijo/a ]</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-quote">[ Espacio para testimonio real de un padre/madre — reemplazar ]</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">😊</div>
+          <div>
+            <div class="testimonial-name">[ Nombre del padre/madre ]</div>
+            <div class="testimonial-detail">[ Track / edad del hijo/a ]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:28px; opacity:0.7; font-size:0.9rem;">
+      [ Reemplazar por reseñas reales de Preply / italki / WhatsApp de padres ]
+    </p>
+  </div>
+</section>
+-->
+
+<!-- PRECIOS -->
+<section class="pricing section" id="precios">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" style="background:var(--amarillo);">Precios y paquetes</span>
+      <h2 style="font-size:2rem;">Cuanto más te comprometés, más conviene</h2>
+    </div>
+
+    <div class="subsection-head">
+      <h3 style="font-size:1.15rem; margin-bottom:24px;">Tipos de paquete</h3>
+      <div class="package-table">
+        <div class="package-cell">🗓️ Mensual — 2 clases por semana</div>
+        <div class="package-cell">🗓️ Mensual — 1 clase por semana</div>
+        <div class="package-cell">🎯 Intensivo pre-examen — 4 u 8 clases</div>
+        <div class="package-cell">📈 Nivelación por nivel — A1, A2, B1, B2</div>
+      </div>
+    </div>
+
+    <h3 class="subsection-head" style="font-size:1.15rem;">Precio por nivel</h3>
+    <div class="price-grid">
+      <div class="price-card" style="--price-bar:var(--amarillo-deep);">
+        <h3>🟡 Primeros Pasos <span style="opacity:0.6; font-weight:500; font-size:0.85rem;">(clases de 50 min)</span></h3>
+        <div class="price-row">
+          <span>Presencial — clase suelta</span><span class="price-tag">$12.000</span>
+        </div>
+        <div class="price-row">
+          <span>Presencial — paquete</span><span class="price-tag deal">$10.000</span>
+        </div>
+        <p class="price-note">Precio por clase, comprando el paquete (los viaticos fuera del costo).</p>
+      </div>
+
+      <div class="price-card" style="--price-bar:linear-gradient(90deg, var(--verde-deep), var(--celeste-deep), var(--violeta-deep));">
+        <h3>🟢🔵🟣 Exploradores, Aventureros y Teens <span style="opacity:0.6; font-weight:500; font-size:0.85rem;">(clases de 60 min)</span></h3>
+        <div class="price-row">
+          <span>Virtual — clase suelta</span><span class="price-tag">$15.000</span>
+        </div>
+        <div class="price-row">
+          <span>Virtual — paquete</span><span class="price-tag deal">$10.000</span>
+        </div>
+        <div class="price-row">
+          <span>Presencial — clase suelta</span><span class="price-tag">$20.000</span>
+        </div>
+        <p class="price-note">Precio por clase, comprando el paquete (los viaticos fuera del costo).</p>
+        <div class="price-row">
+          <span>Presencial — paquete</span><span class="price-tag deal">$15.000</span>
+        </div>
+        <p class="price-note">Precio por clase, comprando el paquete (los viaticos fuera del costo).</p>
+      </div>
+    </div>
+
+    <div class="sibling-promo">
+      👫 <span>¿Más de un hijo/a de edad similar? Hay una promo especial para clases grupales entre hermanos — consultanos.</span>
+    </div>
+
+    <div style="text-align:center; margin-top:24px;">
+      <a href="https://wa.me/541151268940?text=Hola%20Camila!%20Tengo%20dudas%20sobre%20los%20paquetes%20de%20clases" class="btn btn-whatsapp" target="_blank" rel="noopener" style="font-size:0.95rem; padding:12px 22px;">
+        💬 Consultanos por WhatsApp
+      </a>
+    </div>
+
+    <div class="faq">
+      <div class="subsection-head centered">
+        <h3 style="font-size:1.3rem;">Preguntas frecuentes</h3>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Hay clase de prueba? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Sí, una clase de nivelación gratuita de 30 minutos, sin costo, donde además le dejamos una actividad de regalo para hacer en casa.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Puedo cambiar de virtual a presencial? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Sí, avisando con 48hs de anticipación y sujeto a disponibilidad de cupo — por eso conviene consultar antes.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Qué pasa si mi hijo/a falta a una clase? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Se puede faltar avisando con 48hs de anticipación; la clase se recupera en otro día.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Dan clases en grupo? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Sí, siempre que se cumpla el cupo. Para hermanos de edades similares hay una promo especial — consultar.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Necesito comprar un libro específico? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>No. Lo ideal es traer el libro que ya usan en el colegio; en cada clase se dan actividades (y tarea para casa) según lo que necesiten.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Cómo se paga el paquete? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>El pago se hace por adelantado, de forma mensual o semanal según el paquete elegido (te confirmamos cuál corresponde al consultar). Ese pago anticipado es lo que asegura el cupo.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Hay descuento por recomendar a otro/a estudiante? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Sí, si recomendás a alguien más y se inscribe, ambas personas acceden a un descuento.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA CLASE GRATIS + CONTACTO + FOOTER (con fondo decorado continuo) -->
+<div class="decorated-tail">
+  <div class="hero-blob" style="width:180px;height:180px; background:var(--celeste); top:-50px; right:-40px;"></div>
+  <div class="hero-blob" style="width:150px;height:150px; background:var(--amarillo); top:-30px; left:-40px;"></div>
+  <div class="hero-blob" style="width:200px;height:200px; background:var(--violeta); bottom:-60px; right:-30px;"></div>
+
+  <section class="section cta-gratis-section">
+    <div class="wrap">
+      <div class="free-banner" style="margin:0; flex-wrap:wrap; justify-content:center; text-align:center; gap:20px;">
+        <span class="tag">🎁 GRATIS</span>
+        <span>Clase de nivelación de 30 minutos, sin cargo, con actividad y correción de regalo incluida.</span>
+        <button type="button" class="btn btn-whatsapp" style="background:var(--ink);" onclick="openTrialModal()">
+          🎁 Reserva tu clase gratis
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contact section" id="contacto">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" style="background:var(--violeta); color:#fff;">Contacto</span>
+        <h2 style="font-size:2rem;">Contame sobre tu hijo/a</h2>
+      </div>
+      <div class="contact-grid">
+        <form id="contact-form">
+          <div>
+            <label>Nombre del padre/madre *</label>
+            <input type="text" name="parent_name" required>
+          </div>
+          <div>
+            <label>Email o teléfono de contacto *</label>
+            <input type="text" name="contact_info" required placeholder="tu@email.com o tu número">
+          </div>
+          <div>
+            <label>Nombre del chico/a *</label>
+            <input type="text" name="child_name" required>
+          </div>
+          <div>
+            <label>Edad *</label>
+            <input type="number" name="age" min="3" max="18" required>
+          </div>
+          <div>
+            <label>Modalidad preferida</label>
+            <select name="modality">
+              <option>Virtual</option>
+              <option>Presencial</option>
+              <option>No estoy seguro/a</option>
+            </select>
+          </div>
+          <div>
+            <label>Mensaje</label>
+            <textarea name="message" placeholder="Contame un poco del nivel actual y qué días/horarios les quedan cómodos"></textarea>
+          </div>
+          <button type="submit" class="btn btn-whatsapp" style="justify-content:center;">Enviar</button>
+          <p id="form-status" style="font-size:0.85rem; margin:0;"></p>
+        </form>
+        <div class="contact-side-card">
+          <h3>¿Preferís algo más directo?</h3>
+          <p>Escribime por WhatsApp y coordinamos la clase de nivelación gratuita.</p>
+          <a href="https://wa.me/541151268940?text=Hola%20Camila!%20Quiero%20info%20sobre%20las%20clases%20de%20ingl%C3%A9s%20para%20mi%20hijo/a" class="btn btn-whatsapp" target="_blank" rel="noopener" style="justify-content:center;">
+            💬 Escribime por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 English Kids Club — Clases de inglés para infancias y adolescentes
+  </footer>
+</div>
+
+<!-- MODAL: CLASE DE PRUEBA GRATIS -->
+<div class="modal-overlay" id="trial-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeTrialModal()" aria-label="Cerrar">✕</button>
+    <h3>🎁 Tu clase de prueba gratis</h3>
+    <p>Contame un poco sobre tu hijo/a y te llevo directo al calendario para elegir el horario que más te convenga.</p>
+    <form id="trial-form">
+      <div>
+        <label>Nombre del padre/madre *</label>
+        <input type="text" name="parent_name" required>
+      </div>
+      <div>
+        <label>Email o teléfono de contacto *</label>
+        <input type="text" name="contact_info" required placeholder="tu@email.com o tu número">
+      </div>
+      <div>
+        <label>Nombre del chico/a *</label>
+        <input type="text" name="child_name" required>
+      </div>
+      <div>
+        <label>Edad *</label>
+        <input type="number" name="age" min="3" max="18" required>
+      </div>
+      <button type="submit" class="btn btn-whatsapp" style="justify-content:center;">Ir al calendario</button>
+      <p id="trial-form-status" style="font-size:0.85rem; margin:0;"></p>
+    </form>
+  </div>
+</div>
+
+<a href="https://wa.me/541151268940?text=Hola%20Camila!%20Tengo%20una%20consulta" class="wa-float" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.34.671 4.523 1.836 6.37L4 29l7.83-1.79A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm.001 21.6c-1.86 0-3.6-.5-5.1-1.37l-.365-.214-4.646 1.062 1.09-4.518-.24-.38A9.57 9.57 0 0 1 6.4 15c0-5.303 4.298-9.6 9.6-9.6 5.303 0 9.6 4.297 9.6 9.6 0 5.302-4.297 9.6-9.599 9.6zm5.27-7.19c-.288-.144-1.706-.842-1.97-.938-.264-.096-.456-.144-.648.144-.192.288-.744.938-.912 1.13-.168.192-.336.216-.624.072-.288-.144-1.215-.448-2.314-1.428-.856-.763-1.434-1.706-1.602-1.994-.168-.288-.018-.444.126-.588.13-.13.288-.336.432-.504.144-.168.192-.288.288-.48.096-.192.048-.36-.024-.504-.072-.144-.648-1.563-.888-2.14-.234-.562-.472-.486-.648-.495l-.552-.01c-.192 0-.504.072-.768.36-.264.288-1.008.985-1.008 2.404 0 1.42 1.032 2.79 1.176 2.982.144.192 2.03 3.1 4.92 4.347.688.297 1.224.474 1.643.607.69.22 1.318.19 1.814.115.553-.083 1.706-.697 1.947-1.37.24-.672.24-1.248.168-1.37-.072-.12-.264-.192-.552-.336z"/></svg>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  
+  const EMAILJS_PUBLIC_KEY  = "9ZOLUnN5Uijvtr4qO";
+  const EMAILJS_SERVICE_ID  = "service_2tg0ae7";
+  const EMAILJS_TEMPLATE_ID = "template_blqgkg7";
+
+  // 👉 Pegá acá el link de tu Appointment Schedule de Google Calendar
+  // o de tu Event Type de Calendly para la clase de prueba
+  const CALENDAR_BOOKING_URL = "https://calendar.app.google/NKdPja1SYG4UxW3C6";
+
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+</script>
+<script>
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.querySelector('.faq-q').addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i=>{
+        if(i!==item){ i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; }
+      });
+      item.classList.toggle('open');
+      const a = item.querySelector('.faq-a');
+      a.style.maxHeight = isOpen ? null : a.scrollHeight + 'px';
+    });
+  });
+
+  // Menú hamburguesa
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburgerBtn.addEventListener('click', ()=>{
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', isOpen);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=> mobileMenu.classList.remove('open'));
+  });
+
+  // Modal de clase de prueba
+  const trialModal = document.getElementById('trial-modal');
+  function openTrialModal(){ trialModal.classList.add('open'); }
+  function closeTrialModal(){ trialModal.classList.remove('open'); }
+  trialModal.addEventListener('click', (e)=>{
+    if(e.target === trialModal) closeTrialModal();
+  });
+
+  const trialForm = document.getElementById('trial-form');
+  const trialStatus = document.getElementById('trial-form-status');
+  trialForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    trialStatus.textContent = "Guardando tus datos...";
+    trialStatus.style.color = "var(--ink)";
+
+    emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, trialForm)
+      .then(()=>{
+        trialStatus.textContent = "¡Listo! Te llevamos al calendario 🎉";
+        trialStatus.style.color = "var(--verde-deep)";
+        trialForm.reset();
+        setTimeout(()=>{
+          window.open(CALENDAR_BOOKING_URL, "_blank");
+          closeTrialModal();
+        }, 700);
+      })
+      .catch((err)=>{
+        trialStatus.textContent = "Uy, hubo un error guardando tus datos. Igual te llevamos al calendario.";
+        trialStatus.style.color = "#D9534F";
+        console.error(err);
+        setTimeout(()=>{
+          window.open(CALENDAR_BOOKING_URL, "_blank");
+        }, 900);
+      });
+  });
+
+  // Scroll reveal: animación sutil al entrar en pantalla
+  const revealSelectors = '.track-card, .price-card, .section-head, .photo-frame, .hero-illustration, .free-banner, .sibling-promo, .contact-side-card, form, .credentials-marquee, .testimonial-card, .school-support-card, .extra-chip';
+  const revealEls = document.querySelectorAll(revealSelectors);
+  revealEls.forEach((el, i)=>{
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i % 4) * 80 + 'ms';
+  });
+  const revealObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Parallax sutil de los blobs del hero al scrollear
+  const heroBlobs = document.querySelectorAll('.hero .hero-blob');
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    window.addEventListener('scroll', ()=>{
+      const y = window.scrollY;
+      heroBlobs.forEach((blob, i)=>{
+        blob.style.transform = `translateY(${y * (0.12 + i*0.06)}px)`;
+      });
+    }, { passive: true });
+  }
+
+  // Toggle "Qué incluye" en las tarjetas de tracks (tap en mobile, hover ya cubierto por CSS en desktop)
+  document.querySelectorAll('.track-toggle').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      btn.closest('.track-card').classList.toggle('open');
+    });
+  });
+
+  // Envío del formulario de contacto vía EmailJS
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    status.textContent = "Enviando...";
+    status.style.color = "var(--ink)";
+
+    emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
+      .then(()=>{
+        status.textContent = "¡Listo! Te voy a estar escribiendo a la brevedad. 🎉";
+        status.style.color = "var(--verde-deep)";
+        form.reset();
+      })
+      .catch((err)=>{
+        status.textContent = "Uy, hubo un error. Probá de nuevo o escribime directo por WhatsApp.";
+        status.style.color = "#D9534F";
+        console.error(err);
+      });
+  });
+</script>
+
+</body>
+</html>
