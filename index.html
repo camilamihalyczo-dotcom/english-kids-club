@@ -574,6 +574,32 @@
     border:2px solid rgba(46,42,74,0.06);
   }
   .school-support-text p{ margin:14px 0 20px; max-width:62ch; }
+  .activity-blog-card{
+    background:linear-gradient(135deg, #F1EDFF 0%, #FFF6E5 100%);
+    border-radius:28px;
+    padding:40px;
+    border:2px solid rgba(123,87,201,0.15);
+    display:flex;
+    align-items:center;
+    gap:32px;
+    flex-wrap:wrap;
+  }
+  .activity-blog-card-text{ flex:1; min-width:260px; }
+  .activity-blog-card-text p{ margin:14px 0 0; max-width:62ch; }
+  .activity-blog-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:#fff;
+    border:2px solid var(--violeta);
+    border-radius:18px;
+    padding:18px 22px;
+    font-weight:700;
+    color:var(--violeta-deep);
+    font-size:1.05rem;
+    flex-shrink:0;
+    box-shadow:var(--card-shadow);
+  }
   .school-support-list{
     list-style:none;
     margin:0 0 24px;
@@ -752,6 +778,11 @@
         <span class="trust-stars">⭐⭐⭐⭐⭐</span>
         <span>Clases personalizadas, adaptadas a las necesidades de cada niño/a.</span>
       </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;">
+        <span class="credential-pill">🔁 Recuperás la clase si falta</span>
+        <span class="credential-pill">🔀 Virtual o presencial, cambiás cuando quieras</span>
+        <span class="credential-pill">📚 Sin libro obligatorio</span>
+      </div>
     </div>
     <div class="hero-illustration">
       <!-- Ilustración placeholder: reemplazar por arte final (nubes/estrellas/chicos con libros) -->
@@ -877,6 +908,20 @@
           <button type="button" class="track-detail-cta" onclick="openTrialModal()">🎁 Reservar clase de prueba/nivelación gratis</button>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITY BLOG -->
+<section class="section">
+  <div class="wrap">
+    <div class="activity-blog-card">
+      <div class="activity-blog-card-text">
+        <span class="eyebrow" style="background:var(--violeta);color:#fff;">Incluido en todas las clases</span>
+        <h2 style="font-size:1.6rem;">Tu hijo/a también tiene Activity Blog</h2>
+        <p>Es mi plataforma propia de práctica online: flashcards, glosario y actividades organizadas por cada tema que vemos en clase, pensada para chicos — con su propio acceso, para repasar jugando entre clase y clase. Se lo doy en cuanto empieza a tomar clases, sin costo extra.</p>
+      </div>
+      <div class="activity-blog-badge">🎮 Activity Blog</div>
     </div>
   </div>
 </section>
@@ -1132,6 +1177,9 @@
           <a href="https://wa.me/541151268940?text=Hola%20Camila!%20Quiero%20info%20sobre%20las%20clases%20de%20ingl%C3%A9s%20para%20mi%20hijo/a" class="btn btn-whatsapp" target="_blank" rel="noopener" style="justify-content:center;">
             💬 Escribime por WhatsApp
           </a>
+          <div style="display:flex;gap:10px;margin-top:18px;opacity:.6;">
+            <span style="font-size:0.85rem;">📷 Instagram y 🎵 TikTok — próximamente</span>
+          </div>
         </div>
       </div>
     </div>
