@@ -94,8 +94,9 @@
     display:flex; align-items:center; justify-content:space-between;
     padding:14px 24px;
   }
-  .logo{font-family:'Poppins',sans-serif; font-weight:800; font-size:1.3rem;}
-  .logo span{color:var(--violeta-deep);}
+  .logo{display:flex;align-items:center;}
+  .logo-svg{height:30px;width:auto;display:block;}
+  @media (max-width:520px){ .logo-svg{height:24px;} }
   nav .btn{padding:10px 20px; font-size:0.95rem;}
   .hamburger{
     display:none;
@@ -311,6 +312,10 @@
     grid-template-columns:repeat(4,1fr);
     gap:28px;
   }
+  /* Con todas cerradas quedan parejas (stretch por defecto).
+     Al abrir una, cada tarjeta toma su alto natural y las cerradas
+     no se estiran dejando el hueco blanco. */
+  .track-path.has-open{ align-items:start; }
   .track-path::before{
     content:"";
     position:absolute;
@@ -397,19 +402,13 @@
     gap:6px;
   }
   .track-card.open .track-detail{
-    max-height:420px;
+    max-height:760px;   /* antes 420px: cortaba el último ítem en tablet y en Teens */
     opacity:1;
     margin-top:14px;
   }
   .track-card.open .track-toggle-icon{ transform:rotate(45deg); }
-  @media (hover:hover) and (pointer:fine){
-    .track-card:hover .track-detail{
-      max-height:420px;
-      opacity:1;
-      margin-top:14px;
-    }
-    .track-card:hover .track-toggle-icon{ transform:rotate(45deg); }
-  }
+  /* Se quitó el desplegado por hover: con 4 tarjetas en fila hacía saltar
+     el layout al cruzar el mouse. Ahora abre solo con click, igual en desktop y mobile. */
 
   /* ---------- PRECIOS ---------- */
   .pricing{background:var(--cream);}
@@ -467,6 +466,60 @@
     font-size:1.3rem;
   }
   .price-tag.deal{color:var(--verde-deep);}
+  /* ---------- GALERÍAS DESPLEGABLES ---------- */
+  .galeria{margin-top:22px; text-align:center;}
+  .galeria summary{
+    list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:9px;
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:0.95rem;
+    background:#fff; border:2px solid rgba(46,42,74,0.12); border-radius:999px;
+    padding:11px 22px; box-shadow:var(--card-shadow);
+    transition:transform .15s ease;
+  }
+  .galeria summary::-webkit-details-marker{display:none;}
+  .galeria summary:hover{transform:translateY(-2px);}
+  .galeria summary .chev{transition:transform .2s ease; font-size:0.8rem; opacity:0.5;}
+  .galeria[open] summary .chev{transform:rotate(180deg);}
+  .galeria-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px; text-align:left;
+  }
+  .galeria-grid figure{margin:0;}
+  .galeria-grid img{
+    width:100%; height:auto; display:block; border-radius:16px;
+    box-shadow:var(--card-shadow); background:#fff;
+    border:2px solid rgba(46,42,74,0.08);
+  }
+  .galeria-grid figcaption{
+    font-size:0.82rem; opacity:0.7; margin-top:8px; line-height:1.45;
+  }
+  .galeria-grid.cuatro{grid-template-columns:repeat(4,1fr); gap:13px;}
+  @media (max-width:860px){
+    .galeria-grid, .galeria-grid.cuatro{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:520px){
+    .galeria-grid, .galeria-grid.cuatro{grid-template-columns:1fr;}
+  }
+  .price-tag s{opacity:0.45; font-weight:600; margin-right:6px; font-size:0.88em;}
+  .price-tag b{color:var(--verde-deep); font-weight:800;}
+  .price-sub{font-size:0.85rem; opacity:0.65; font-weight:500; display:block; margin-top:2px;}
+  .price-perks{
+    list-style:none; margin:18px 0 0; padding:14px 0 0;
+    border-top:2px dashed rgba(46,42,74,0.12);
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .price-perks li{font-size:0.88rem; padding-left:22px; position:relative; opacity:0.85; line-height:1.45;}
+  .price-perks li::before{content:"\2713"; position:absolute; left:0; color:var(--verde-deep); font-weight:800;}
+  .cual-elegir{
+    background:#fff; border-radius:20px; box-shadow:var(--card-shadow);
+    padding:20px 24px; margin-top:22px; border-left:6px solid var(--amarillo-deep);
+    font-size:0.95rem; line-height:1.6;
+  }
+  .cual-elegir b{font-weight:700;}
+  .levers{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:26px;}
+  .lever{background:#fff; border-radius:20px; box-shadow:var(--card-shadow); padding:20px;}
+  .lever .ic{font-size:1.55rem; line-height:1;}
+  .lever b{display:block; font-weight:800; font-size:0.98rem; margin-top:10px;}
+  .lever p{font-size:0.85rem; opacity:0.75; margin-top:6px; line-height:1.5;}
+  @media (max-width:860px){ .levers{grid-template-columns:1fr;} }
   .price-note{
     font-size:0.85rem;
     opacity:0.75;
@@ -660,6 +713,13 @@
   .testimonial-name{ font-weight:700; font-size:0.9rem; }
   .testimonial-detail{ font-size:0.8rem; opacity:0.65; }
 
+  /* ---------- RESEÑAS VERIFICADAS · TusClases ---------- */
+  .rv-card{background:#fff;border-radius:24px;box-shadow:var(--card-shadow);padding:24px;margin-top:30px;}
+  .rv-loading{font-weight:600;font-size:0.9rem;opacity:0.55;text-align:center;padding:24px 0;}
+  #rv-block.rv-ok .rv-loading{display:none}
+  #rv-block.rv-down{display:none}
+
+
   /* ---------- WHATSAPP FLOAT ---------- */
   .wa-float{
     position:fixed;
@@ -687,7 +747,7 @@
     opacity:0.6;
   }
 
-  @media (max-width: 860px){
+  @media (max-width: 1024px){   /* antes 860px: entre 860 y 1024 las 4 tarjetas quedaban de ~190px y el texto se partía */
     .hero .wrap, .about .wrap, .contact-grid{grid-template-columns:1fr;}
     .hero-illustration{order:-1;}
     .about .photo-frame{order:-1; max-width:280px; margin:0 auto;}
@@ -742,7 +802,9 @@
 
 <nav>
   <div class="wrap">
-    <div class="logo">English<span>·</span>Kids Club</div>
+    <a href="#" class="logo" aria-label="English Kids Club — inicio">
+      <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 859 90" role="img" aria-label="English Kids Club"> <title>English Kids Club</title> <g fill="#2E93C9"> <path transform="translate(0.00 61.92) scale(0.08600 -0.08600)" d="M252 548V433H477V284H252V157H507V0H56V705H507V548Z"/> <path transform="translate(47.13 61.92) scale(0.08600 -0.08600)" d="M634 327V0H438V301Q438 349 413.0 376.5Q388 404 346 404Q302 404 277.0 376.5Q252 349 252 301V0H56V561H252V481Q278 519 322.0 542.5Q366 566 423 566Q520 566 577.0 501.5Q634 437 634 327Z"/> <path transform="translate(106.12 61.92) scale(0.08600 -0.08600)" d="M428 483V561H624V6Q624 -73 594.0 -136.5Q564 -200 500.5 -238.0Q437 -276 340 -276Q210 -276 132.0 -215.0Q54 -154 43 -49H236Q242 -76 266.0 -91.0Q290 -106 328 -106Q428 -106 428 6V78Q405 39 362.5 16.0Q320 -7 263 -7Q196 -7 141.5 28.0Q87 63 55.5 128.5Q24 194 24 281Q24 368 55.5 433.0Q87 498 141.5 533.0Q196 568 263 568Q320 568 362.5 545.0Q405 522 428 483ZM326 397Q282 397 253.0 366.5Q224 336 224 281Q224 227 253.0 195.5Q282 164 326 164Q369 164 398.5 195.0Q428 226 428 281Q428 335 398.5 366.0Q369 397 326 397Z"/> <path transform="translate(164.60 61.92) scale(0.08600 -0.08600)" d="M252 740V0H56V740Z"/> <path transform="translate(191.09 61.92) scale(0.08600 -0.08600)" d="M40 713Q40 757 71.5 786.0Q103 815 155 815Q206 815 237.5 786.0Q269 757 269 713Q269 670 237.5 641.5Q206 613 155 613Q103 613 71.5 641.5Q40 670 40 713ZM252 561V0H56V561Z"/> <path transform="translate(217.58 61.92) scale(0.08600 -0.08600)" d="M27 189H217Q221 162 242.0 147.0Q263 132 294 132Q318 132 332.0 142.0Q346 152 346 168Q346 189 323.0 199.0Q300 209 247 221Q187 233 147.0 248.0Q107 263 77.5 297.0Q48 331 48 389Q48 439 75.0 479.5Q102 520 154.5 544.0Q207 568 281 568Q391 568 454.0 514.0Q517 460 527 372H350Q345 399 326.5 413.5Q308 428 277 428Q253 428 240.5 419.0Q228 410 228 394Q228 374 251.0 363.5Q274 353 325 342Q386 329 426.5 313.0Q467 297 497.5 261.5Q528 226 528 165Q528 116 499.5 77.0Q471 38 418.5 15.5Q366 -7 295 -7Q219 -7 159.5 18.5Q100 44 65.5 88.5Q31 133 27 189Z"/> <path transform="translate(266.43 61.92) scale(0.08600 -0.08600)" d="M634 327V0H438V301Q438 349 413.0 376.5Q388 404 346 404Q302 404 277.0 376.5Q252 349 252 301V0H56V740H252V481Q278 519 322.5 542.5Q367 566 425 566Q521 566 577.5 501.5Q634 437 634 327Z"/> </g> <g fill="#2FAE6E"> <path transform="translate(342.62 61.92) scale(0.08600 -0.08600)" d="M473 0 252 309V0H56V705H252V401L471 705H697L438 363L710 0Z"/> <path transform="translate(405.06 61.92) scale(0.08600 -0.08600)" d="M40 713Q40 757 71.5 786.0Q103 815 155 815Q206 815 237.5 786.0Q269 757 269 713Q269 670 237.5 641.5Q206 613 155 613Q103 613 71.5 641.5Q40 670 40 713ZM252 561V0H56V561Z"/> <path transform="translate(431.55 61.92) scale(0.08600 -0.08600)" d="M264 568Q318 568 360.5 545.5Q403 523 427 484V740H624V0H427V78Q404 39 362.0 16.0Q320 -7 263 -7Q196 -7 141.5 28.0Q87 63 55.5 128.5Q24 194 24 281Q24 368 55.5 433.0Q87 498 142.0 533.0Q197 568 264 568ZM326 397Q282 397 253.0 366.5Q224 336 224 281Q224 227 253.0 195.5Q282 164 326 164Q369 164 398.5 195.0Q428 226 428 281Q428 335 398.5 366.0Q369 397 326 397Z"/> <path transform="translate(490.03 61.92) scale(0.08600 -0.08600)" d="M27 189H217Q221 162 242.0 147.0Q263 132 294 132Q318 132 332.0 142.0Q346 152 346 168Q346 189 323.0 199.0Q300 209 247 221Q187 233 147.0 248.0Q107 263 77.5 297.0Q48 331 48 389Q48 439 75.0 479.5Q102 520 154.5 544.0Q207 568 281 568Q391 568 454.0 514.0Q517 460 527 372H350Q345 399 326.5 413.5Q308 428 277 428Q253 428 240.5 419.0Q228 410 228 394Q228 374 251.0 363.5Q274 353 325 342Q386 329 426.5 313.0Q467 297 497.5 261.5Q528 226 528 165Q528 116 499.5 77.0Q471 38 418.5 15.5Q366 -7 295 -7Q219 -7 159.5 18.5Q100 44 65.5 88.5Q31 133 27 189Z"/> </g> <g fill="#7B57C9"> <path transform="translate(556.08 61.92) scale(0.08600 -0.08600)" d="M383 712Q515 712 605.0 641.5Q695 571 721 450H510Q491 490 457.5 511.0Q424 532 380 532Q312 532 271.5 483.5Q231 435 231 354Q231 272 271.5 223.5Q312 175 380 175Q424 175 457.5 196.0Q491 217 510 257H721Q695 136 605.0 65.5Q515 -5 383 -5Q279 -5 199.0 40.5Q119 86 75.5 167.5Q32 249 32 354Q32 458 75.5 539.5Q119 621 199.0 666.5Q279 712 383 712Z"/> <path transform="translate(621.26 61.92) scale(0.08600 -0.08600)" d="M252 740V0H56V740Z"/> <path transform="translate(647.75 61.92) scale(0.08600 -0.08600)" d="M630 561V0H433V80Q408 42 364.0 18.5Q320 -5 263 -5Q165 -5 108.5 59.5Q52 124 52 235V561H247V260Q247 212 272.5 184.5Q298 157 340 157Q383 157 408.0 184.5Q433 212 433 260V561Z"/> <path transform="translate(706.75 61.92) scale(0.08600 -0.08600)" d="M416 568Q483 568 537.5 533.0Q592 498 623.5 433.0Q655 368 655 281Q655 194 623.5 128.5Q592 63 537.5 28.0Q483 -7 416 -7Q359 -7 317.0 15.5Q275 38 252 78V0H56V740H252V483Q275 523 317.0 545.5Q359 568 416 568ZM354 397Q311 397 281.5 366.0Q252 335 252 281Q252 226 281.5 195.0Q311 164 354 164Q397 164 426.5 195.5Q456 227 456 281Q456 336 426.5 366.5Q397 397 354 397Z"/> </g> <g transform="translate(781.2 1)"> <circle cx="26" cy="40" r="27" fill="#4FB4E8"/> <circle cx="57" cy="18" r="18" fill="#FFC94A"/> <circle cx="52" cy="55" r="25" fill="#F5A623"/> <circle cx="23" cy="69" r="14" fill="#C6B4EC"/> </g> </svg>
+    </a>
     <div class="nav-links">
       <a href="#contacto" class="btn btn-outline" style="border-width:2px;">Escribime</a>
     </div>
@@ -779,19 +841,42 @@
         <span>Clases personalizadas, adaptadas a las necesidades de cada niño/a.</span>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;">
-        <span class="credential-pill">🔁 Recuperás la clase si falta</span>
-        <span class="credential-pill">🔀 Virtual o presencial, cambiás cuando quieras</span>
+        <span class="credential-pill">🔁 Recuperás la clase avisando con 48hs</span>
+        <span class="credential-pill">🔀 Online o presencial, podés cambiar</span>
         <span class="credential-pill">📚 Sin libro obligatorio</span>
       </div>
     </div>
     <div class="hero-illustration">
-      <!-- Ilustración placeholder: reemplazar por arte final (nubes/estrellas/chicos con libros) -->
-      <svg viewBox="0 0 300 300" width="70%">
-        <circle cx="150" cy="120" r="70" fill="#FFFFFF" opacity="0.9"/>
-        <circle cx="90" cy="80" r="26" fill="#FFC94A"/>
-        <circle cx="230" cy="70" r="18" fill="#FFFFFF" opacity="0.7"/>
-        <path d="M110 190 q40 -30 80 0 q40 30 80 0" stroke="#fff" stroke-width="6" fill="none" opacity="0.6"/>
-        <text x="150" y="130" font-size="52" text-anchor="middle" font-family="sans-serif">📚</text>
+      <!-- Composición de marca: burbujas de diálogo. Todo vectorial, nítido a cualquier tamaño.
+           Para cambiar las frases, editá los <text> (y el ancho del <rect> si son más largas). -->
+      <svg viewBox="0 0 300 300" width="90%" role="img" aria-label="Chicos hablando en inglés: Hello! Can I try again? I know this one!">
+        <circle cx="252" cy="60" r="18" fill="#FFC94A"/>
+        <circle cx="50"  cy="150" r="11" fill="#5FC98D"/>
+        <circle cx="274" cy="192" r="9"  fill="#FFFFFF" opacity="0.55"/>
+        <circle cx="228" cy="252" r="15" fill="#FFFFFF" opacity="0.30"/>
+        <circle cx="146" cy="272" r="6"  fill="#FFFFFF" opacity="0.5"/>
+        <circle cx="86"  cy="106" r="7"  fill="#FFFFFF" opacity="0.35"/>
+
+        <g transform="rotate(-5 84 66)">
+          <rect x="28" y="42" width="112" height="48" rx="20" fill="#FFFFFF"/>
+          <path d="M52 88 L48 104 L70 90 Z" fill="#FFFFFF"/>
+          <text x="84" y="73" font-size="23" font-weight="700" text-anchor="middle"
+                font-family="Poppins, sans-serif" fill="#2E2A4A">Hello!</text>
+        </g>
+
+        <g transform="rotate(3 178 134)">
+          <rect x="92" y="112" width="172" height="44" rx="19" fill="#FFFFFF"/>
+          <path d="M118 154 L112 169 L136 156 Z" fill="#FFFFFF"/>
+          <text x="178" y="140" font-size="15" font-weight="600" text-anchor="middle"
+                font-family="Poppins, sans-serif" fill="#2E2A4A">Can I try again?</text>
+        </g>
+
+        <g transform="rotate(-2 118 212)">
+          <rect x="34" y="190" width="168" height="44" rx="19" fill="#FFFFFF"/>
+          <path d="M60 232 L54 247 L78 234 Z" fill="#FFFFFF"/>
+          <text x="118" y="218" font-size="15" font-weight="600" text-anchor="middle"
+                font-family="Poppins, sans-serif" fill="#2E2A4A">I know this one!</text>
+        </g>
       </svg> 
   </div>
 </header>
@@ -824,7 +909,7 @@
       <div class="about-points">
         <div class="about-point">🎨 Clases dinámicas con juegos y canciones</div>
         <div class="about-point">👧🧒 Grupos por edad y nivel</div>
-        <div class="about-point">📱 Virtual o presencial (en CABA)</div>
+        <div class="about-point">📱 Online, o presencial en Congreso (CABA)</div>
         <div class="about-point">📊 Seguimiento compartido con los padres</div>
       </div>
     </div>
@@ -923,6 +1008,20 @@
       </div>
       <div class="activity-blog-badge">🎮 Activity Blog</div>
     </div>
+
+    <details class="galeria">
+      <summary>👀 Ver cómo se ve por dentro <span class="chev">▼</span></summary>
+      <div class="galeria-grid">
+        <figure>
+          <img src="assets/ab-elegi-grupo.jpg" alt="Pantalla de Activity Blog para elegir el grupo" loading="lazy">
+          <figcaption>Un grupo por edad, con su propio color. Entran con la clave que les paso — sin crear cuentas.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/ab-grupos.jpg" alt="Actividades disponibles dentro de un grupo de Activity Blog" loading="lazy">
+          <figcaption>Adentro: flashcards, cuestionarios, listening y reading — todo sobre los temas que vemos en clase.</figcaption>
+        </figure>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -964,58 +1063,73 @@
       <div class="extra-chip">🤝 Descuento por recomendar a otra familia</div>
     </div>
   </div>
-</section>
-
-<!--
-  TESTIMONIOS - BLOQUE OCULTO POR AHORA
-  Se deja guardado como comentario para reutilizarlo más adelante.
-<section class="testimonials section">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow" style="background:var(--violeta); color:#fff;">Lo que dicen las familias</span>
-      <h2 style="font-size:2rem;">Confían en nosotros</h2>
-    </div>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-        <p class="testimonial-quote">[ Espacio para testimonio real de un padre/madre — reemplazar ]</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">😊</div>
-          <div>
-            <div class="testimonial-name">[ Nombre del padre/madre ]</div>
-            <div class="testimonial-detail">[ Track / edad del hijo/a ]</div>
-          </div>
-        </div>
+    <details class="galeria">
+      <summary>🏅 Ver ejemplos de diplomas <span class="chev">▼</span></summary>
+      <div class="galeria-grid cuatro">
+        <figure><img src="assets/diploma-1.jpg" alt="Diploma de Primeros Pasos" loading="lazy"><figcaption>Primeros Pasos</figcaption></figure>
+        <figure><img src="assets/diploma-2.jpg" alt="Diploma de Exploradores" loading="lazy"><figcaption>Exploradores</figcaption></figure>
+        <figure><img src="assets/diploma-3.jpg" alt="Diploma de Aventureros" loading="lazy"><figcaption>Aventureros</figcaption></figure>
+        <figure><img src="assets/diploma-4.jpg" alt="Diploma de Teens" loading="lazy"><figcaption>Teens</figcaption></figure>
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-        <p class="testimonial-quote">[ Espacio para testimonio real de un padre/madre — reemplazar ]</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">😊</div>
-          <div>
-            <div class="testimonial-name">[ Nombre del padre/madre ]</div>
-            <div class="testimonial-detail">[ Track / edad del hijo/a ]</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-        <p class="testimonial-quote">[ Espacio para testimonio real de un padre/madre — reemplazar ]</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">😊</div>
-          <div>
-            <div class="testimonial-name">[ Nombre del padre/madre ]</div>
-            <div class="testimonial-detail">[ Track / edad del hijo/a ]</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p style="text-align:center; margin-top:28px; opacity:0.7; font-size:0.9rem;">
-      [ Reemplazar por reseñas reales de Preply / italki / WhatsApp de padres ]
-    </p>
+      <p class="price-note" style="margin-top:14px;">Cada bloque trimestral termina con su diploma. No es un certificado oficial de Cambridge — es el reconocimiento del trabajo que hizo conmigo.</p>
+    </details>
   </div>
 </section>
--->
+
+<!-- ====== RESEÑAS VERIFICADAS · TusClases ====== -->
+<section class="testimonials section" id="rv-block">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;">
+      <span class="eyebrow" style="background:var(--violeta); color:#fff;">Opiniones verificadas</span>
+      <h2 style="font-size:2rem;">Lo que dicen mis alumnos</h2>
+      <p style="max-width:58ch; margin:14px auto 0; opacity:0.75; font-size:0.95rem;">
+        Reseñas reales publicadas en mi perfil de TusClases. Son de mis clases en general —
+        chicos, adolescentes y también adultos.
+      </p>
+    </div>
+    <div class="rv-card">
+      <div class="rv-loading">Cargando reseñas…</div>
+      <!-- Tusclases Reviews v.1.0.1 -->
+      <script>
+      (function (i, s, o, g, a, m){
+          a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+          a.async = 1; a.src = g;
+          m.parentNode.insertBefore(a, m)
+      }(window, document, 'script', 'https://d13nnzzfr74buh.cloudfront.net/widget-reviews_jq.min.js?v=795'));
+      </script>
+      <div id="my_tutor_reviews_widget" data-tutor="camila-mihalyczo" data-domain="https://www.tusclases.com.ar" data-cdn="https://d13nnzzfr74buh.cloudfront.net/" data-css-version="810">
+        <a href="https://www.tusclases.com.ar" target="_blank" rel="noopener"><img src="https://d13nnzzfr74buh.cloudfront.net/i/logo_tusclases_v3@2x.png" width="100" height="38" alt="Clases particulares" /></a>
+      </div>
+      <!-- End Widget -->
+    </div>
+  </div>
+</section>
+<script>
+/* Vigía del widget de TusClases.
+   Si en 7s no renderizó (CDN caído, bloqueador, slug cambiado), oculta
+   la sección entera en vez de dejar un título con un hueco debajo.
+   Para depurar: mirá la consola. */
+(function(){
+  var block = document.getElementById('rv-block');
+  var host  = document.getElementById('my_tutor_reviews_widget');
+  if(!block || !host) return;
+  var t0 = Date.now(), avisado = false;
+  var iv = setInterval(function(){
+    var cargo = host.getBoundingClientRect().height > 120;
+    if (cargo){                                  // renderizó (incluso tarde)
+      clearInterval(iv);
+      block.classList.remove('rv-down');
+      block.classList.add('rv-ok');
+    } else if (!avisado && Date.now() - t0 > 7000){
+      avisado = true;                            // se oculta, pero sigue esperando
+      block.classList.add('rv-down');
+      console.warn('[tusclases] el widget de reseñas no cargó en 7s — sección oculta');
+    } else if (Date.now() - t0 > 20000){
+      clearInterval(iv);                         // se rinde de verdad
+    }
+  }, 300);
+})();
+</script>
 
 <!-- PRECIOS -->
 <section class="pricing section" id="precios">
@@ -1025,55 +1139,73 @@
       <h2 style="font-size:2rem;">Cuanto más te comprometés, más conviene</h2>
     </div>
 
-    <div class="subsection-head">
-      <h3 style="font-size:1.15rem; margin-bottom:24px;">Tipos de paquete</h3>
-      <div class="package-table">
-        <div class="package-cell">🗓️ Mensual — 2 clases por semana</div>
-        <div class="package-cell">🗓️ Mensual — 1 clase por semana</div>
-        <div class="package-cell">🎯 Intensivo pre-examen — 4 u 8 clases</div>
-        <div class="package-cell">📈 Nivelación por nivel — A1, A2, B1, B2</div>
-      </div>
-    </div>
-
-    <h3 class="subsection-head" style="font-size:1.15rem;">Precio por nivel</h3>
     <div class="price-grid">
-      <div class="price-card" style="--price-bar:var(--amarillo-deep);">
-        <h3>🟡 Primeros Pasos <span style="opacity:0.6; font-weight:500; font-size:0.85rem;">(clases de 50 min)</span></h3>
-        <div class="price-row">
-          <span>Presencial — clase suelta</span><span class="price-tag">$12.000</span>
-        </div>
-        <div class="price-row">
-          <span>Presencial — paquete</span><span class="price-tag deal">$10.000</span>
-        </div>
-        <p class="price-note">Precio por clase, comprando el paquete (los viaticos fuera del costo).</p>
+      <div class="price-card" style="--price-bar:var(--celeste-deep);">
+        <h3>💻 Online <span class="price-sub">Clases de 60 min · desde donde estén</span></h3>
+        <div class="price-row"><span>Clase suelta</span><span class="price-tag">$15.000</span></div>
+        <div class="price-row"><span>Mensual · 4 clases <small style="opacity:0.6;">(1 por semana)</small></span><span class="price-tag"><s>$60.000</s><b>$51.000</b></span></div>
+        <div class="price-row"><span>Mensual · 8 clases <small style="opacity:0.6;">(2 por semana)</small></span><span class="price-tag"><s>$120.000</s><b>$102.000</b></span></div>
+        <p class="price-note">El precio en verde es con el 15% de descuento por pago adelantado del mes.</p>
+        <ul class="price-perks">
+          <li>Más horarios para elegir</li>
+          <li>Sin viajes ni esperas</li>
+          <li>Menos clases perdidas: no depende del clima ni del tránsito</li>
+          <li>Fácil de recuperar si surge algo</li>
+        </ul>
       </div>
 
-      <div class="price-card" style="--price-bar:linear-gradient(90deg, var(--verde-deep), var(--celeste-deep), var(--violeta-deep));">
-        <h3>🟢🔵🟣 Exploradores, Aventureros y Teens <span style="opacity:0.6; font-weight:500; font-size:0.85rem;">(clases de 60 min)</span></h3>
-        <div class="price-row">
-          <span>Virtual — clase suelta</span><span class="price-tag">$15.000</span>
-        </div>
-        <div class="price-row">
-          <span>Virtual — paquete</span><span class="price-tag deal">$10.000</span>
-        </div>
-        <div class="price-row">
-          <span>Presencial — clase suelta</span><span class="price-tag">$20.000</span>
-        </div>
-        <p class="price-note">Precio por clase, comprando el paquete (los viaticos fuera del costo).</p>
-        <div class="price-row">
-          <span>Presencial — paquete</span><span class="price-tag deal">$15.000</span>
-        </div>
-        <p class="price-note">Precio por clase, comprando el paquete (los viaticos fuera del costo).</p>
+      <div class="price-card" style="--price-bar:var(--violeta-deep);">
+        <h3>🏠 Presencial <span class="price-sub">En Congreso, CABA · clases de 60 min</span></h3>
+        <div class="price-row"><span>Clase suelta</span><span class="price-tag">$20.000</span></div>
+        <div class="price-row"><span>Mensual · 4 clases <small style="opacity:0.6;">(1 por semana)</small></span><span class="price-tag"><s>$80.000</s><b>$68.000</b></span></div>
+        <div class="price-row"><span>Mensual · 8 clases <small style="opacity:0.6;">(2 por semana)</small></span><span class="price-tag"><s>$160.000</s><b>$136.000</b></span></div>
+        <p class="price-note">Los chicos vienen a casa. No doy clases a domicilio.</p>
+        <ul class="price-perks">
+          <li>Cupos limitados</li>
+          <li>Juegos, flashcards y materiales sobre la mesa</li>
+          <li>Sin pantallas de por medio</li>
+          <li>Atención completa, sin notificaciones</li>
+        </ul>
       </div>
     </div>
 
-    <div class="sibling-promo">
-      👫 <span>¿Más de un hijo/a de edad similar? Hay una promo especial para clases grupales entre hermanos — consultanos.</span>
+    <div class="cual-elegir">
+      <b>¿Cuál elegir?</b> Para los más chiquitos, de 4 a 9 años, recomiendo presencial: a esa edad el juego con
+      materiales en la mano rinde mucho más que la pantalla. Para Aventureros y Teens el online funciona igual de
+      bien, y suele ser más fácil de sostener con los horarios del colegio.
+    </div>
+
+    <p class="price-note" style="margin-top:16px;">
+      <b>Primeros Pasos (4 a 6 años)</b> tiene clases de 50 min: $12.500 online y $17.000 presencial.
+      <b>Intensivo pre-examen</b> (4 u 8 clases) se cobra al valor de clase suelta, porque es puntual y no mensual.
+    </p>
+
+    <h3 class="subsection-head" style="font-size:1.15rem; margin-top:34px;">Formas de pagar menos</h3>
+    <div class="levers">
+      <div class="lever">
+        <div class="ic">📅</div>
+        <b>15% pagando el mes adelantado</b>
+        <p>Es el descuento que ya está aplicado arriba, en verde. Además es lo que reserva el horario fijo.</p>
+      </div>
+      <div class="lever">
+        <div class="ic">👫</div>
+        <b>50% para el segundo hermano</b>
+        <p>Si son dos hermanos de edad parecida en la misma clase, el segundo paga la mitad. Si toman clases separadas, 25% cada uno.</p>
+      </div>
+      <div class="lever">
+        <div class="ic">🔒</div>
+        <b>Precio congelado por trimestre</b>
+        <p>Contratando tres meses, el valor de la clase no se mueve en todo ese período, pase lo que pase.</p>
+      </div>
+    </div>
+
+    <div class="sibling-promo" style="margin-top:22px;">
+      🎁 <span>¿Conocés a otra familia que esté buscando? Si se inscribe, ustedes dos se llevan <b>una clase gratis</b> cada uno.</span>
     </div>
 
     <div style="text-align:center; margin-top:24px;">
       <a href="https://wa.me/541151268940?text=Hola%20Camila!%20Tengo%20dudas%20sobre%20los%20paquetes%20de%20clases" class="btn btn-whatsapp" target="_blank" rel="noopener" style="font-size:0.95rem; padding:12px 22px;">
-        💬 Consultanos por WhatsApp
+        💬 Consultame por WhatsApp
       </a>
     </div>
 
@@ -1083,19 +1215,31 @@
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Hay clase de prueba? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Sí, una clase de nivelación gratuita de 30 minutos, sin costo, donde además le dejamos una actividad de regalo para hacer en casa.</p></div>
+        <div class="faq-a"><p>Sí, una clase de nivelación gratuita de 30 minutos, sin costo, donde además le dejo una actividad de regalo para hacer en casa.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Puedo cambiar de virtual a presencial? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Sí, avisando con 48hs de anticipación y sujeto a disponibilidad de cupo — por eso conviene consultar antes.</p></div>
+        <div class="faq-a"><p>Sí, avisando con 48hs de anticipación y según haya cupo presencial disponible, que es el que más se llena — por eso conviene consultar antes.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Qué pasa si mi hijo/a falta a una clase? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Se puede faltar avisando con 48hs de anticipación; la clase se recupera en otro día.</p></div>
+        <div class="faq-a"><p>Avisando con 48hs de anticipación, la clase se recupera otro día. Si el aviso llega más tarde, esa clase se pierde — el horario ya había quedado guardado para ustedes.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Dan clases en grupo? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Sí, siempre que se cumpla el cupo. Para hermanos de edades similares hay una promo especial — consultar.</p></div>
+        <div class="faq-a"><p>Sí, siempre que se cumpla el cupo. Para hermanos de edades similares: si toman la misma clase, el segundo paga el 50%; si toman clases separadas, 25% cada uno.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Dónde son las clases presenciales? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>En mi casa, en Congreso (San Nicolás, CABA). Los chicos vienen acá — no doy clases a domicilio. La dirección exacta te la paso cuando coordinamos el horario.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Por qué la presencial sale más que la online? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Porque los cupos presenciales son pocos y de a uno por vez, e incluyen todos los materiales y juegos físicos. La clase online tiene mucha más disponibilidad horaria. La enseñanza es la misma en las dos: lo que cambia es el cupo y los materiales.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Me pueden aumentar el precio a mitad de camino? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Contratando el trimestre, no: el valor de la clase queda congelado los tres meses. Mes a mes puede ajustarse, y en ese caso te aviso siempre antes de que empiece el mes nuevo.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Necesito comprar un libro específico? <span class="faq-icon">+</span></button>
@@ -1103,11 +1247,11 @@
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Cómo se paga el paquete? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>El pago se hace por adelantado, de forma mensual o semanal según el paquete elegido (te confirmamos cuál corresponde al consultar). Ese pago anticipado es lo que asegura el cupo.</p></div>
+        <div class="faq-a"><p>El pago se hace por adelantado, de forma mensual o semanal según el paquete elegido (te confirmo cuál corresponde cuando hablemos). Ese pago anticipado es lo que asegura el cupo.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Hay descuento por recomendar a otro/a estudiante? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Sí, si recomendás a alguien más y se inscribe, ambas personas acceden a un descuento.</p></div>
+        <div class="faq-a"><p>Sí. Si recomendás a otra familia y se inscribe, ustedes dos se llevan una clase gratis cada uno. Prefiero regalar una clase antes que bajar el precio: así el valor de la clase no se mueve.</p></div>
       </div>
     </div>
   </div>
@@ -1177,9 +1321,6 @@
           <a href="https://wa.me/541151268940?text=Hola%20Camila!%20Quiero%20info%20sobre%20las%20clases%20de%20ingl%C3%A9s%20para%20mi%20hijo/a" class="btn btn-whatsapp" target="_blank" rel="noopener" style="justify-content:center;">
             💬 Escribime por WhatsApp
           </a>
-          <div style="display:flex;gap:10px;margin-top:18px;opacity:.6;">
-            <span style="font-size:0.85rem;">📷 Instagram y 🎵 TikTok — próximamente</span>
-          </div>
         </div>
       </div>
     </div>
@@ -1325,7 +1466,10 @@
   // Toggle "Qué incluye" en las tarjetas de tracks (tap en mobile, hover ya cubierto por CSS en desktop)
   document.querySelectorAll('.track-toggle').forEach(btn=>{
     btn.addEventListener('click', ()=>{
-      btn.closest('.track-card').classList.toggle('open');
+      const card = btn.closest('.track-card');
+      card.classList.toggle('open');
+      const path = card.closest('.track-path');
+      if(path) path.classList.toggle('has-open', !!path.querySelector('.track-card.open'));
     });
   });
 

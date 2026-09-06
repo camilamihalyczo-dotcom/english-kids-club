@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>English Kids Club — Apoyo escolar con tiritas</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================
+   FLYER A4 CON TIRITAS CORTABLES — ENGLISH KIDS CLUB
+   Para editar: los textos están abajo, en el <body>,
+   señalizados con comentarios en MAYÚSCULA.
+   El número de WhatsApp se repite en cada tirita: si lo
+   cambiás, cambialo en las 9 (buscar y reemplazar).
+   =========================================================== */
+:root{
+  --cream:#FFFBF2; --ink:#2E2A4A;
+  --amarillo:#FFC94A; --amarillo-deep:#F5A623;
+  --verde:#5FC98D; --verde-deep:#2FAE6E;
+  --celeste:#4FB4E8; --celeste-deep:#2E93C9;
+  --violeta:#9B7EDE; --violeta-deep:#7B57C9;
+  --whatsapp:#25D366;
+  --card-shadow:0 8px 24px rgba(46,42,74,0.10);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+@page{size:A4;margin:0;}
+body{background:#fff;font-family:'Poppins',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5;}
+.sheet{position:relative;width:794px;height:1123px;overflow:hidden;background:var(--cream);display:flex;flex-direction:column;}
+h1,h2,h3{font-family:'Inter','Poppins',sans-serif;font-weight:800;text-transform:uppercase;line-height:1.06;}
+
+.blob{position:absolute;border-radius:50%;filter:blur(1px);z-index:0;}
+.b1{width:300px;height:300px;background:var(--amarillo);opacity:.22;top:-115px;left:-90px;}
+.b2{width:210px;height:210px;background:var(--celeste);opacity:.18;top:230px;right:-95px;}
+
+.top{position:relative;z-index:2;padding:40px 46px 0;flex:1;display:flex;flex-direction:column;}
+
+/* logo */
+.logo{display:flex;align-items:center;gap:12px;}
+.logo-type{font-weight:800;line-height:.94;letter-spacing:-0.02em;font-size:20px;}
+.logo-type .l1{color:var(--celeste-deep);display:block;}
+.logo-type .l2{color:var(--verde-deep);display:block;}
+.logo-type .l3{color:var(--violeta-deep);display:block;}
+.logo-dots{position:relative;flex:none;width:52px;height:44px;}
+.logo-dots i{position:absolute;border-radius:50%;display:block;}
+
+.head{display:flex;align-items:flex-start;justify-content:space-between;}
+.tag{font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;background:#fff;
+  border:2px solid rgba(46,42,74,.10);border-radius:999px;padding:9px 18px;box-shadow:var(--card-shadow);}
+.tag b{color:var(--violeta-deep);}
+
+/* hero */
+.eyebrow{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  padding:7px 16px;border-radius:999px;background:rgba(155,126,222,.18);color:var(--violeta-deep);margin-bottom:14px;}
+.hero{margin-top:26px;text-align:center;}
+h1{font-size:54px;}
+h1 .mark{background:linear-gradient(180deg,transparent 58%,var(--amarillo) 58%,var(--amarillo) 96%,transparent 96%);padding:0 6px;margin:0 -2px;}
+.lead{font-size:16.5px;margin:16px auto 0;max-width:52ch;color:rgba(46,42,74,.86);}
+.lead b{font-weight:600;}
+
+/* bullets */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:24px;}
+.card{background:#fff;border-radius:18px;padding:13px 16px;box-shadow:var(--card-shadow);
+  display:flex;gap:11px;align-items:center;border-left:6px solid var(--celeste);}
+.card .ic{font-size:20px;line-height:1;flex:none;}
+.card b{font-size:14px;font-weight:700;line-height:1.25;}
+.c-y{border-left-color:var(--amarillo-deep);} .c-g{border-left-color:var(--verde-deep);}
+.c-b{border-left-color:var(--celeste-deep);} .c-v{border-left-color:var(--violeta-deep);}
+
+/* fila niveles + gratis */
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:15px;align-items:stretch;}
+.box{border-radius:20px;padding:14px 18px;box-shadow:var(--card-shadow);}
+.box h3{font-size:12.5px;letter-spacing:.06em;}
+.levels{background:#fff;}
+.pills{display:flex;gap:8px;margin-top:10px;flex-wrap:nowrap;}
+.pill{border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700;color:#fff;white-space:nowrap;}
+.pill.b{background:var(--celeste-deep);} .pill.v{background:var(--violeta-deep);}
+.free{background:var(--amarillo);border:2.5px solid var(--amarillo-deep);}
+.free h3{color:#6B4A05;}
+.free p{font-size:12.5px;font-weight:600;margin-top:6px;line-height:1.3;color:#4A3405;}
+
+/* franja CTA + QR */
+.cta{display:flex;align-items:center;gap:16px;margin-top:16px;background:var(--ink);border-radius:20px;padding:14px 20px;}
+.cta .waico{width:40px;height:40px;border-radius:50%;background:var(--whatsapp);display:flex;align-items:center;justify-content:center;flex:none;}
+.cta .waico svg{width:24px;height:24px;fill:#fff;}
+.cta .t{flex:1;color:#fff;}
+.cta .t small{display:block;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);}
+.cta .t strong{display:block;font-family:'Inter','Poppins',sans-serif;font-size:23px;font-weight:800;line-height:1.2;}
+.cta img{width:74px;height:74px;background:#fff;border-radius:10px;padding:2px;display:block;}
+.cta .qt{color:rgba(255,255,255,.65);font-size:10px;font-weight:600;line-height:1.3;max-width:80px;text-transform:uppercase;letter-spacing:.05em;}
+
+/* aviso de corte */
+.cutline{display:flex;align-items:center;gap:10px;margin:16px 0 10px;margin-top:auto;color:rgba(46,42,74,.55);
+  font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;}
+.cutline .dash{flex:1;border-top:2px dashed rgba(46,42,74,.30);}
+
+/* ---------- TIRITAS ---------- */
+.strips{height:342px;display:grid;grid-template-columns:repeat(9,1fr);flex:none;}
+.strip{border-left:1.5px dashed rgba(46,42,74,.35);display:flex;align-items:center;justify-content:center;padding:14px 0;overflow:hidden;}
+.strip:first-child{border-left:none;}
+.strip .v{writing-mode:vertical-rl;transform:rotate(180deg);text-align:left;display:flex;align-items:center;gap:9px;}
+.strip .num{font-family:'Inter','Poppins',sans-serif;font-weight:800;font-size:18px;letter-spacing:-0.01em;color:var(--ink);white-space:nowrap;}
+.strip .who{font-size:11.5px;font-weight:700;color:var(--violeta-deep);white-space:nowrap;letter-spacing:.02em;}
+.strip .who em{font-style:normal;color:var(--celeste-deep);}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="blob b1"></div><div class="blob b2"></div>
+
+  <div class="top">
+    <!-- ====== CABECERA ====== -->
+    <div class="head">
+      <div class="logo">
+        <div class="logo-type"><span class="l1">English</span><span class="l2">Kids</span><span class="l3">Club</span></div>
+        <div class="logo-dots">
+          <i style="width:30px;height:30px;background:#4FB4E8;left:0;top:6px;"></i>
+          <i style="width:20px;height:20px;background:#FFC94A;left:24px;top:0;"></i>
+          <i style="width:28px;height:28px;background:#F5A623;left:20px;top:14px;"></i>
+          <i style="width:16px;height:16px;background:#C6B4EC;left:8px;top:26px;"></i>
+        </div>
+      </div>
+      <div class="tag">Virtual o presencial · <b>CABA</b></div>
+    </div>
+
+    <!-- ====== TITULAR ====== -->
+    <div class="hero">
+      <span class="eyebrow">Apoyo escolar · Primaria y Secundaria</span>
+      <h1>¿Se te complica<br><span class="mark">el inglés del cole</span>?</h1>
+      <p class="lead">Refuerzo escolar <b>a demanda</b>: repasamos tus tareas y preparamos las evaluaciones del colegio. Sin atarte a un paquete fijo.</p>
+    </div>
+
+    <!-- ====== BENEFICIOS ====== -->
+    <div class="cards">
+      <div class="card c-y"><span class="ic">✏️</span><b>Tareas y trabajos prácticos</b></div>
+      <div class="card c-g"><span class="ic">📖</span><b>Repaso para evaluaciones</b></div>
+      <div class="card c-b"><span class="ic">📝</span><b>Corrección de essays y writing</b></div>
+      <div class="card c-v"><span class="ic">🔤</span><b>Vocabulario y gramática</b></div>
+    </div>
+
+    <!-- ====== NIVELES + CLASE GRATIS ====== -->
+    <div class="row2">
+      <div class="box levels">
+        <h3>Niveles disponibles</h3>
+        <div class="pills"><span class="pill b">🧭 Aventureros · 10-12</span><span class="pill v">🎧 Teens · 13-17</span></div>
+      </div>
+      <div class="box free">
+        <h3>🎁 Primera clase gratis</h3>
+        <p>Nivelación de <b>30 min sin cargo</b>, con actividad de regalo.</p>
+      </div>
+    </div>
+
+    <!-- ====== CONTACTO ====== -->
+    <div class="cta">
+      <div class="waico"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.84-.2-.49-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg></div>
+      <div class="t"><small>WhatsApp</small><strong>+54 11 5126 8940</strong></div>
+      <img src="data:image/png;base64,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" alt="QR">
+      <div class="qt">Escaneá: niveles, precios y clase gratis</div>
+    </div>
+
+    <div class="cutline"><span>✂ Llevate el número</span><span class="dash"></span></div>
+  </div>
+
+  <!-- ====== TIRITAS CORTABLES (9) ====== -->
+  <div class="strips">
+    <div class="strip"><div class="v"><span class="num">+54 11 5126 8940</span><span class="who"><em>English Kids Club</em></span></div></div>
+    <div class="strip"><div class="v"><span class="num">+54 11 5126 8940</span><span class="who"><em>English Kids Club</em></span></div></div>
+    <div class="strip"><div class="v"><span class="num">+54 11 5126 8940</span><span class="who"><em>English Kids Club</em></span></div></div>
+    <div class="strip"><div class="v"><span class="num">+54 11 5126 8940</span><span class="who"><em>English Kids Club</em></span></div></div>
+    <div class="strip"><div class="v"><span class="num">+54 11 5126 8940</span><span class="who"><em>English Kids Club</em></span></div></div>
+    <div class="strip"><div class="v"><span class="num">+54 11 5126 8940</span><span class="who"><em>English Kids Club</em></span></div></div>
+    <div class="strip"><div class="v"><span class="num">+54 11 5126 8940</span><span class="who"><em>English Kids Club</em></span></div></div>
+    <div class="strip"><div class="v"><span class="num">+54 11 5126 8940</span><span class="who"><em>English Kids Club</em></span></div></div>
+    <div class="strip"><div class="v"><span class="num">+54 11 5126 8940</span><span class="who"><em>English Kids Club</em></span></div></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Actividades de regalo — English Kids Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================
+   ACTIVIDADES DE REGALO · English Kids Club
+   4 páginas A4, una por nivel. Es el regalo prometido en el FAQ
+   después de la clase de nivelación gratuita.
+   Imprimí solo la que corresponde: Ctrl+P -> Páginas: 2, por ej.
+   Márgenes "Ninguno" + "Gráficos de fondo" activado.
+   =========================================================== */
+
+:root{
+  --cream:#FFFBF2; --ink:#2E2A4A;
+  --amarillo:#FFC94A; --amarillo-deep:#F5A623;
+  --verde:#5FC98D;    --verde-deep:#2FAE6E;
+  --celeste:#4FB4E8;  --celeste-deep:#2E93C9;
+  --violeta:#9B7EDE;  --violeta-deep:#7B57C9;
+  --sh:0 8px 24px rgba(46,42,74,0.10);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+@page{size:A4;margin:0;}
+body{background:#fff;font-family:'Poppins',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5;}
+.page{position:relative;width:794px;height:1122px;overflow:hidden;background:var(--cream);
+  display:flex;flex-direction:column;break-after:page;page-break-after:always;}
+.page:last-child{break-after:auto;page-break-after:auto;}
+h1,h2{font-family:'Inter','Poppins',sans-serif;font-weight:800;text-transform:uppercase;line-height:1.06;}
+.t1{--c:var(--amarillo);--cd:var(--amarillo-deep);}
+.t2{--c:var(--verde);--cd:var(--verde-deep);}
+.t3{--c:var(--celeste);--cd:var(--celeste-deep);}
+.t4{--c:var(--violeta);--cd:var(--violeta-deep);}
+.blob{position:absolute;border-radius:50%;filter:blur(1px);z-index:0;}
+.b1{width:290px;height:290px;background:var(--c);opacity:.22;top:-120px;right:-90px;}
+.b2{width:190px;height:190px;background:var(--celeste);opacity:.13;bottom:-60px;left:-70px;}
+.inner{position:relative;z-index:2;padding:38px 48px 0;flex:1;display:flex;flex-direction:column;}
+.head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;}
+.logo-svg{height:28px;width:auto;display:block;}
+.nivel{background:var(--c);border:2.5px solid var(--cd);border-radius:999px;padding:7px 17px;
+  font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
+h1{font-size:38px;margin-top:20px;}
+h1 .mark{background:linear-gradient(180deg,transparent 60%,var(--c) 60%,var(--c) 96%,transparent 96%);padding:0 6px;}
+.como{font-size:13.5px;color:rgba(46,42,74,.8);margin-top:11px;max-width:64ch;}
+.como b{font-weight:700;}
+.card{background:#fff;border-radius:22px;box-shadow:var(--sh);padding:22px;margin-top:16px;
+  flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px;}
+.nombre{display:flex;align-items:center;gap:12px;margin-top:14px;font-size:13px;font-weight:600;}
+.nombre .linea{flex:1;border-bottom:2px dotted rgba(46,42,74,.3);height:20px;}
+.pie{margin-top:auto;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  border-top:2px dashed rgba(46,42,74,.18);padding-top:13px;}
+.pie .msg{font-size:12px;color:rgba(46,42,74,.7);max-width:56ch;}
+.pie .msg b{color:var(--ink);font-weight:700;}
+.sello{flex:none;width:84px;height:84px;border-radius:50%;border:3px solid var(--cd);color:var(--cd);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-8deg);}
+.sello b{font-family:'Inter','Poppins',sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;line-height:1;text-align:center;}
+.sello span{font-size:7.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-align:center;margin-top:3px;line-height:1.2;}
+
+.colores{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:16px;flex:1;}
+.col{border:3px solid var(--ink);border-radius:20px;height:auto;display:flex;align-items:flex-end;justify-content:center;padding-bottom:11px;}
+.col span{font-family:'Inter','Poppins',sans-serif;font-weight:900;font-size:23px;letter-spacing:.03em;}
+.trazo{display:flex;gap:10px;align-items:center;flex:none;}
+.trazo b{font-size:12px;font-weight:700;}
+.trazo .l{flex:1;border-bottom:2px dashed rgba(46,42,74,.3);height:28px;}
+
+table.sopa{border-collapse:collapse;margin:0 auto;}
+table.sopa td{width:34px;height:34px;text-align:center;font-family:'Inter','Poppins',sans-serif;
+  font-weight:700;font-size:15px;color:var(--ink);}
+.banco{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px;}
+.banco span{background:var(--c);border:2px solid var(--cd);border-radius:999px;padding:6px 14px;font-weight:700;font-size:12.5px;}
+
+.dias{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.dia{border:2.5px solid rgba(46,42,74,.16);border-radius:16px;padding:10px 13px;}
+.dia b{font-family:'Inter','Poppins',sans-serif;font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--cd);}
+.dia .l{border-bottom:2px dotted rgba(46,42,74,.28);height:30px;margin-top:7px;}
+.bank2{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px;}
+.bank2 span{background:rgba(79,180,232,.16);border-radius:999px;padding:5px 13px;font-size:11.5px;font-weight:600;}
+
+.fix{display:grid;grid-template-columns:1fr 1fr;gap:16px 22px;}
+.fix .bad{font-size:12.5px;color:rgba(46,42,74,.6);padding-left:12px;border-left:3px solid #D9534F;}
+.fix .good{font-size:12.5px;font-weight:600;padding-left:12px;border-left:3px solid var(--verde-deep);}
+.fix .rot{font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(46,42,74,.45);}
+.frases{display:flex;flex-direction:column;gap:10px;}
+.frases div{font-size:13.5px;padding-left:16px;position:relative;}
+.frases div::before{content:"\203A";position:absolute;left:0;color:var(--cd);font-weight:800;}
+
+</style>
+</head>
+<body>
+
+<div class="page t1">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="inner">
+    <div class="head">
+      <img class="logo-svg" src="logo-ekc-horizontal.svg" alt="English Kids Club">
+      <span class="nivel">Primeros Pasos &middot; 4 a 6</span>
+    </div>
+    <h1>Colour the<br><span class="mark">colours</span></h1>
+    <p class="como">Pintá cada cuadro del color que dice la palabra. <b>Para el adulto:</b> leele la palabra en voz alta una vez y dejá que elija solo/a el crayón — equivocarse es parte del juego.</p>
+    <div class="nombre"><span>My name is</span><span class="linea"></span></div>
+    <div class="card"><div class="colores"><div class="col"><span>RED</span></div><div class="col"><span>BLUE</span></div><div class="col"><span>GREEN</span></div><div class="col"><span>YELLOW</span></div><div class="col"><span>ORANGE</span></div><div class="col"><span>PURPLE</span></div></div><div class="trazo"><b>Now trace your favourite one:</b><span class="l"></span></div></div>
+    <div class="pie">
+      <p class="msg">Traelo a la próxima clase y lo miramos juntos. <b>No hace falta que salga perfecto.</b></p>
+      <div class="sello"><b>Great<br>job!</b><span>English<br>Kids Club</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page t2">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="inner">
+    <div class="head">
+      <img class="logo-svg" src="logo-ekc-horizontal.svg" alt="English Kids Club">
+      <span class="nivel">Exploradores &middot; 7 a 9</span>
+    </div>
+    <h1>Find the<br><span class="mark">8 words</span></h1>
+    <p class="como">Buscá las 8 palabras escondidas. Pueden estar de izquierda a derecha, de arriba abajo o en diagonal. Cuando encuentres una, marcala y tachala de la lista.</p>
+    <div class="nombre"><span>My name is</span><span class="linea"></span></div>
+    <div class="card"><table class="sopa">
+        <tr><td>P</td><td>L</td><td>A</td><td>A</td><td>I</td><td>P</td><td>I</td><td>G</td><td>Y</td><td>U</td><td>L</td></tr>
+        <tr><td>G</td><td>R</td><td>E</td><td>E</td><td>N</td><td>O</td><td>L</td><td>L</td><td>R</td><td>P</td><td>C</td></tr>
+        <tr><td>H</td><td>D</td><td>H</td><td>H</td><td>P</td><td>G</td><td>K</td><td>E</td><td>G</td><td>E</td><td>P</td></tr>
+        <tr><td>U</td><td>U</td><td>A</td><td>A</td><td>P</td><td>V</td><td>T</td><td>L</td><td>H</td><td>N</td><td>V</td></tr>
+        <tr><td>C</td><td>W</td><td>D</td><td>P</td><td>M</td><td>A</td><td>Y</td><td>G</td><td>O</td><td>C</td><td>P</td></tr>
+        <tr><td>F</td><td>N</td><td>V</td><td>P</td><td>W</td><td>K</td><td>C</td><td>M</td><td>U</td><td>I</td><td>O</td></tr>
+        <tr><td>M</td><td>C</td><td>F</td><td>Y</td><td>F</td><td>E</td><td>A</td><td>E</td><td>S</td><td>L</td><td>T</td></tr>
+        <tr><td>M</td><td>U</td><td>S</td><td>I</td><td>C</td><td>O</td><td>V</td><td>E</td><td>E</td><td>U</td><td>U</td></tr>
+        <tr><td>P</td><td>W</td><td>L</td><td>S</td><td>C</td><td>H</td><td>O</td><td>O</td><td>L</td><td>E</td><td>S</td></tr>
+        <tr><td>S</td><td>F</td><td>R</td><td>I</td><td>E</td><td>N</td><td>D</td><td>E</td><td>A</td><td>A</td><td>V</td></tr>
+        <tr><td>D</td><td>R</td><td>E</td><td>N</td><td>G</td><td>G</td><td>A</td><td>I</td><td>G</td><td>J</td><td>R</td></tr>
+</table><div class="banco"><span>SCHOOL</span><span>FRIEND</span><span>PENCIL</span><span>WATER</span><span>HAPPY</span><span>MUSIC</span><span>GREEN</span><span>HOUSE</span></div></div>
+    <div class="pie">
+      <p class="msg">Contame en la próxima clase cuál fue la más difícil de encontrar. <b>Yo tardé en ver una.</b></p>
+      <div class="sello"><b>Great<br>job!</b><span>English<br>Kids Club</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page t3">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="inner">
+    <div class="head">
+      <img class="logo-svg" src="logo-ekc-horizontal.svg" alt="English Kids Club">
+      <span class="nivel">Aventureros &middot; 10 a 12</span>
+    </div>
+    <h1>My week in<br><span class="mark">English</span></h1>
+    <p class="como">Escribí <b>una cosa que hiciste cada día</b>, en inglés y en pasado. Una línea por día, corta. Si no sabés una palabra, usá el banco de abajo o dejala en español y la vemos juntos.</p>
+    <div class="nombre"><span>My name is</span><span class="linea"></span></div>
+    <div class="card"><div class="dias"><div class="dia"><b>Monday</b><div class="l"></div></div><div class="dia"><b>Tuesday</b><div class="l"></div></div><div class="dia"><b>Wednesday</b><div class="l"></div></div><div class="dia"><b>Thursday</b><div class="l"></div></div><div class="dia"><b>Friday</b><div class="l"></div></div><div class="dia"><b>Saturday</b><div class="l"></div></div><div class="dia"><b>Sunday</b><div class="l"></div></div><div class="dia" style="border-style:dashed;"><b>Favourite day</b><div class="l"></div></div></div><div class="bank2"><span>I played…</span><span>I watched…</span><span>I went to…</span><span>I ate…</span><span>I studied…</span><span>I saw…</span><span>I talked to…</span><span>I listened to…</span></div></div>
+    <div class="pie">
+      <p class="msg">No lo corrijas con el traductor: <b>quiero ver cómo lo pensás vos.</b> Los errores los miramos en clase, que para eso están.</p>
+      <div class="sello"><b>Great<br>job!</b><span>English<br>Kids Club</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page t4">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="inner">
+    <div class="head">
+      <img class="logo-svg" src="logo-ekc-horizontal.svg" alt="English Kids Club">
+      <span class="nivel">Teens &middot; 13 a 17</span>
+    </div>
+    <h1>Six mistakes<br><span class="mark">everyone makes</span></h1>
+    <p class="como">Los seis errores que se le escapan a casi todo hispanohablante. No los memorices: <b>fijate cuál de los seis hacés vos</b> y prestale atención esta semana.</p>
+    
+    <div class="card"><div class="fix"><span class="rot">&#10007; Lo que sale solo</span><span class="rot">&#10003; Lo que suena natural</span><div class="bad">I have 15 years.</div><div class="good">I&rsquo;m 15 years old.</div><div class="bad">I am agree.</div><div class="good">I agree.</div><div class="bad">Explain me this.</div><div class="good">Explain this to me.</div><div class="bad">I&rsquo;m boring.</div><div class="good">I&rsquo;m bored.</div><div class="bad">Yesterday I go to&hellip;</div><div class="good">Yesterday I went to&hellip;</div><div class="bad">People is nice.</div><div class="good">People are nice.</div></div><div style="border-top:2px solid rgba(46,42,74,.14);margin:16px 0 12px;"></div><div style="font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(46,42,74,.45);margin-bottom:9px;">Para cuando te trabás en clase</div><div class="frases"><div>&ldquo;How do you say <b>[palabra]</b> in English?&rdquo;</div><div>&ldquo;Can you repeat that, please?&rdquo;</div><div>&ldquo;I&rsquo;m not sure, but I think&hellip;&rdquo;</div><div>&ldquo;What&rsquo;s the difference between <b>[A]</b> and <b>[B]</b>?&rdquo;</div><div>&ldquo;Sorry, I don&rsquo;t get it. Can you explain it another way?&rdquo;</div></div></div>
+    <div class="pie">
+      <p class="msg">Si cazás uno de estos en una serie o en un video, mandámelo. <b>Ese es el ejercicio real.</b></p>
+      <div class="sello"><b>Great<br>job!</b><span>English<br>Kids Club</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
