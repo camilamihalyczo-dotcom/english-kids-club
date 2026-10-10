@@ -30,9 +30,10 @@
     font-family:'Poppins',sans-serif;
     color:var(--ink);
     background:var(--cream);
-    line-height:1.55;
-    overflow-x:hidden;
+    line-height:1.6;
+    overflow-x:clip;
   }
+  html{overflow-x:clip;}
   h1,h2,h3,.display{
     font-family:'Inter',sans-serif;
     font-weight:700;
@@ -216,7 +217,17 @@
     filter:blur(2px);
     opacity:0.35;
     z-index:0;
+    pointer-events:none;
+    animation:blob-float 14s ease-in-out infinite alternate;
   }
+  .hero-blob:nth-of-type(2n){animation-duration:18s; animation-delay:-6s;}
+  .hero-blob:nth-of-type(3n){animation-duration:22s; animation-delay:-11s;}
+  @keyframes blob-float{
+    0%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(14px,-18px) scale(1.04);}
+    100%{transform:translate(-10px,12px) scale(.98);}
+  }
+  @media (prefers-reduced-motion: reduce){ .hero-blob{animation:none;} }
   .hero-illustration{
     position:relative;
     aspect-ratio:1/1;
@@ -761,7 +772,7 @@
 
   @media (max-width: 1024px){   /* antes 860px: entre 860 y 1024 las 4 tarjetas quedaban de ~190px y el texto se partía */
     .hero .wrap, .about .wrap, .contact-grid{grid-template-columns:1fr;}
-    .hero-illustration{order:-1;}
+    .hero-illustration{max-width:340px; width:100%; margin:8px auto 0;}
     .about .photo-frame{order:-1; max-width:280px; margin:0 auto;}
     .track-path{grid-template-columns:1fr 1fr;}
     .track-path::before{display:none;}
@@ -793,15 +804,45 @@
     html{scroll-behavior:auto;}
   }
 
+  /* ---------- PLANES ---------- */
+  .pricing-lead{max-width:62ch;margin:14px auto 0;font-size:1.05rem;opacity:.9;}
+  .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch;margin-top:8px;}
+  .plan-card{position:relative;display:flex;flex-direction:column;border-radius:22px;padding:34px 24px 24px;background:#fff;box-shadow:var(--card-shadow);}
+  .plan-card::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;border-radius:22px 22px 0 0;background:var(--price-bar,var(--amarillo-deep));}
+  .plan-card.featured{box-shadow:0 0 0 3px var(--verde-deep),var(--card-shadow);}
+  .plan-badge{position:absolute;top:-14px;left:24px;background:var(--verde-deep);color:#fff;font-weight:700;font-size:.875rem;padding:5px 14px;border-radius:999px;}
+  .plan-card h3{font-size:1.15rem;}
+  .plan-desc{font-size:1rem;margin:10px 0 18px;opacity:.85;}
+  .plan-prices{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .plan-prices div{background:var(--cream);border-radius:14px;padding:12px;display:flex;flex-direction:column;line-height:1.25;}
+  .plan-prices span{font-size:.875rem;font-weight:600;opacity:.8;}
+  .plan-prices s{font-size:.875rem;opacity:.6;margin-top:4px;}
+  .plan-prices b{font-size:1.45rem;font-weight:800;margin-top:2px;}
+  .plan-card.featured .plan-prices b{color:var(--verde-deep);}
+  .plan-prices small{font-size:.875rem;opacity:.8;margin-top:2px;}
+  .plan-off{font-size:1rem;font-weight:600;color:var(--verde-deep);margin:12px 0 0;}
+  .plan-card .price-perks{margin-bottom:22px;}
+  .plan-btn{margin-top:auto;justify-content:center;width:100%;font-size:1rem;padding:13px 20px;min-height:48px;}
+  .modality{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px;}
+  .modality div{background:#fff;border-radius:18px;box-shadow:var(--card-shadow);padding:18px 22px;}
+  .modality b{font-weight:700;}
+  .modality p{margin:6px 0 0;font-size:1rem;opacity:.85;}
+  @media (max-width:1024px){ .plan-grid{grid-template-columns:1fr;max-width:560px;margin-left:auto;margin-right:auto;} .modality{grid-template-columns:1fr;} }
+
+  /* ---------- LEGIBILIDAD: tamaños mínimos ---------- */
+  .lever p,.price-perks li,.faq-a p,.cual-elegir,.price-note,.galeria-grid figcaption,.about-point,.school-support-list li,.track-card p,.track-card li{font-size:1rem;}
+  .lever p,.price-perks li{opacity:.85;}
+  footer{opacity:.8;}
+
   /* ---------- SCROLL REVEAL ---------- */
   .reveal{
     opacity:0;
-    transform:translateY(28px);
-    transition:opacity .6s ease, transform .6s ease;
+    transform:translateY(16px);
+    transition:opacity .4s ease var(--rd,0ms), transform .4s cubic-bezier(.2,.7,.3,1) var(--rd,0ms);
   }
   .reveal.visible{
     opacity:1;
-    transform:translateY(0);
+    transform:none;
   }
   .reveal-stagger.visible > *{
     transition-delay:calc(var(--i,0) * 90ms);
@@ -947,7 +988,7 @@
       <div class="track-card" style="--track-color:var(--amarillo-deep);">
         <div class="track-milestone">1</div>
         <h3>Primeros Pasos</h3>
-        <div class="track-age">4–6 años · clases de 50 min</div>
+        <div class="track-age">4–6 años · clases de 60 min</div>
         <p class="track-desc">Vocabulario básico, juego y canciones. Su primer contacto con el inglés, sin presión.</p>
         <button type="button" class="track-toggle">Qué incluye <span class="track-toggle-icon">+</span></button>
         <div class="track-detail">
@@ -1154,38 +1195,66 @@
 <section class="pricing section" id="precios">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow" style="background:var(--amarillo);">Precios y paquetes</span>
-      <h2 style="font-size:2rem;">Cuanto más te comprometés, más conviene</h2>
+      <span class="eyebrow" style="background:var(--amarillo);">Planes y modalidades</span>
+      <h2 style="font-size:2rem;">Cuanto más frecuencia, mejor valor por clase</h2>
+      <p class="pricing-lead">Un espacio dinámico, lúdico y sin frustración para que los chicos incorporen el idioma con seguridad y naturalidad. Todas las clases son individuales y duran 60 minutos.</p>
     </div>
 
-    <div class="price-grid">
-      <div class="price-card" style="--price-bar:var(--celeste-deep);">
-        <h3>💻 Online <span class="price-sub">Clases de 60 min · desde donde estén</span></h3>
-        <div class="price-row"><span>Clase suelta</span><span class="price-tag">$15.000</span></div>
-        <div class="price-row"><span>Mensual · 4 clases <small style="opacity:0.6;">(1 por semana)</small></span><span class="price-tag"><s>$60.000</s><b>$51.000</b></span></div>
-        <div class="price-row"><span>Mensual · 8 clases <small style="opacity:0.6;">(2 por semana)</small></span><span class="price-tag"><s>$120.000</s><b>$102.000</b></span></div>
-        <p class="price-note">El precio en verde es con el 15% de descuento por pago adelantado del mes.</p>
+    <div class="plan-grid">
+      <div class="plan-card" style="--price-bar:var(--celeste-deep);">
+        <h3>Clase individual</h3>
+        <p class="plan-desc">Para resolver dudas antes de una prueba o destrabar una tarea puntual del colegio.</p>
+        <div class="plan-prices">
+          <div><span>Online</span><b>$20.000</b><small>por clase</small></div>
+          <div><span>Presencial</span><b>$25.000</b><small>por clase</small></div>
+        </div>
         <ul class="price-perks">
-          <li>Más horarios para elegir</li>
-          <li>Sin viajes ni esperas</li>
-          <li>Menos clases perdidas: no depende del clima ni del tránsito</li>
-          <li>Fácil de recuperar si surge algo</li>
+          <li>Refuerzo directo sobre el temario del colegio</li>
+          <li>Material didáctico digital incluido</li>
+          <li>Sin compromiso de continuidad</li>
         </ul>
+        <a href="https://wa.me/541151268940?text=Hola%20Camila!%20Quiero%20coordinar%20una%20clase%20puntual" class="btn btn-outline plan-btn" target="_blank" rel="noopener">Coordinar clase puntual</a>
       </div>
 
-      <div class="price-card" style="--price-bar:var(--violeta-deep);">
-        <h3>🏠 Presencial <span class="price-sub">En Congreso, CABA · clases de 60 min</span></h3>
-        <div class="price-row"><span>Clase suelta</span><span class="price-tag">$20.000</span></div>
-        <div class="price-row"><span>Mensual · 4 clases <small style="opacity:0.6;">(1 por semana)</small></span><span class="price-tag"><s>$80.000</s><b>$68.000</b></span></div>
-        <div class="price-row"><span>Mensual · 8 clases <small style="opacity:0.6;">(2 por semana)</small></span><span class="price-tag"><s>$160.000</s><b>$136.000</b></span></div>
-        <p class="price-note">Los chicos vienen a casa. No doy clases a domicilio.</p>
+      <div class="plan-card featured" style="--price-bar:var(--verde-deep);">
+        <span class="plan-badge">Recomendado</span>
+        <h3>Plan mensual · 1 por semana</h3>
+        <p class="plan-desc">El ritmo ideal para acompañar el ciclo lectivo, sumar pronunciación y afianzar la base conversacional.</p>
+        <div class="plan-prices">
+          <div><span>Online</span><s>$80.000</s><b>$68.000</b><small>$17.000 por clase</small></div>
+          <div><span>Presencial</span><s>$100.000</s><b>$85.000</b><small>$21.250 por clase</small></div>
+        </div>
+        <p class="plan-off">4 clases al mes · 15% off pagando el mes adelantado</p>
         <ul class="price-perks">
-          <li>Cupos limitados</li>
-          <li>Juegos, flashcards y materiales sobre la mesa</li>
-          <li>Sin pantallas de por medio</li>
-          <li>Atención completa, sin notificaciones</li>
+          <li>Adaptado a su edad: Primeros Pasos, Exploradores, Aventureros o Teens</li>
+          <li>Acceso a Activity Blog con juegos y flashcards</li>
+          <li>Seguimiento de tareas y cuadernos del colegio</li>
+          <li>Reporte periódico de avances para la familia</li>
         </ul>
+        <button class="btn btn-whatsapp plan-btn" type="button" onclick="openTrialModal()">🎁 Reservá tu clase gratis</button>
       </div>
+
+      <div class="plan-card" style="--price-bar:var(--violeta-deep);">
+        <h3>Plan intensivo · 2 por semana</h3>
+        <p class="plan-desc">Para exámenes de nivelación, exámenes internacionales para chicos o quienes quieren avanzar más rápido.</p>
+        <div class="plan-prices">
+          <div><span>Online</span><s>$160.000</s><b>$128.000</b><small>$16.000 por clase</small></div>
+          <div><span>Presencial</span><s>$200.000</s><b>$160.000</b><small>$20.000 por clase</small></div>
+        </div>
+        <p class="plan-off">8 clases al mes · 20% off pagando el mes adelantado</p>
+        <ul class="price-perks">
+          <li>Doble frecuencia para ganar soltura oral</li>
+          <li>Acceso completo a la plataforma y su biblioteca de recursos</li>
+          <li>Simulacros de examen y corrección de redacciones</li>
+          <li>Reportes mensuales detallados</li>
+        </ul>
+        <a href="https://wa.me/541151268940?text=Hola%20Camila!%20Quiero%20consultar%20por%20el%20plan%20intensivo" class="btn btn-outline plan-btn" target="_blank" rel="noopener">Consultar plan intensivo</a>
+      </div>
+    </div>
+
+    <div class="modality">
+      <div><b>💻 Online</b><p>Más horarios para elegir, sin viajes y fácil de recuperar si surge algo.</p></div>
+      <div><b>🏠 Presencial</b><p>En Congreso, CABA. Juegos y materiales sobre la mesa, sin pantallas de por medio. Cupos limitados.</p></div>
     </div>
 
     <div class="cual-elegir">
@@ -1194,22 +1263,17 @@
       bien, y suele ser más fácil de sostener con los horarios del colegio.
     </div>
 
-    <p class="price-note" style="margin-top:16px;">
-      <b>Primeros Pasos (4 a 6 años)</b> tiene clases de 50 min: $12.500 online y $17.000 presencial.
-      <b>Intensivo pre-examen</b> (4 u 8 clases) se cobra al valor de clase suelta, porque es puntual y no mensual.
-    </p>
-
     <h3 class="subsection-head" style="font-size:1.15rem; margin-top:34px;">Formas de pagar menos</h3>
     <div class="levers">
       <div class="lever">
         <div class="ic">📅</div>
-        <b>15% pagando el mes adelantado</b>
-        <p>Es el descuento que ya está aplicado arriba, en verde. Además es lo que reserva el horario fijo.</p>
+        <b>Hasta 20% pagando el mes adelantado</b>
+        <p>15% en el plan mensual y 20% en el intensivo. El pago adelantado también reserva el horario fijo.</p>
       </div>
       <div class="lever">
         <div class="ic">👫</div>
-        <b>50% para el segundo hermano</b>
-        <p>Si son dos hermanos de edad parecida en la misma clase, el segundo paga la mitad. Si toman clases separadas, 25% cada uno.</p>
+        <b>Beneficio para hermanos</b>
+        <p>Consultá por aranceles preferenciales para hermanos en turnos consecutivos.</p>
       </div>
       <div class="lever">
         <div class="ic">🔒</div>
@@ -1219,7 +1283,7 @@
     </div>
 
     <div class="sibling-promo" style="margin-top:22px;">
-      🎁 <span>¿Conocés a otra familia que esté buscando? Si se inscribe, ustedes dos se llevan <b>una clase gratis</b> cada uno.</span>
+      🎁 <span><b>Familias Conectadas:</b> si recomendás a otra familia y empieza su plan mensual, tu hijo/a recibe <b>una clase individual gratis</b> el mes siguiente.</span>
     </div>
 
     <div style="text-align:center; margin-top:24px;">
@@ -1234,31 +1298,31 @@
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Hay clase de prueba? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Sí, una clase de nivelación gratuita de 30 minutos, sin costo, donde además le dejo una actividad de regalo para hacer en casa.</p></div>
+        <div class="faq-a"><p>Sí, una clase de nivelación de 30 minutos sin cargo. Conocemos los intereses y el nivel de tu hijo/a, armamos el cronograma ideal y le dejo una actividad de regalo.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Puedo cambiar de virtual a presencial? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Sí, avisando con 48hs de anticipación y según haya cupo presencial disponible, que es el que más se llena — por eso conviene consultar antes.</p></div>
+        <div class="faq-a"><p>Sí, avisando con 48 hs de anticipación y según el cupo presencial disponible.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Qué pasa si mi hijo/a falta a una clase? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Avisando con 48hs de anticipación, la clase se recupera otro día. Si el aviso llega más tarde, esa clase se pierde — el horario ya había quedado guardado para ustedes.</p></div>
+        <div class="faq-a"><p>Avisando con 48 hs de anticipación, la clase se recupera otro día. Con menos aviso, la clase se pierde.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Dan clases en grupo? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Sí, siempre que se cumpla el cupo. Para hermanos de edades similares: si toman la misma clase, el segundo paga el 50%; si toman clases separadas, 25% cada uno.</p></div>
+        <div class="faq-a"><p>Sí, cuando se completa el cupo. Para hermanos hay aranceles preferenciales: consultame.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Dónde son las clases presenciales? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>En mi casa, en Congreso (San Nicolás, CABA). Los chicos vienen acá — no doy clases a domicilio. La dirección exacta te la paso cuando coordinamos el horario.</p></div>
+        <div class="faq-a"><p>En Congreso, CABA. La dirección exacta te la paso cuando coordinamos el horario.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Por qué la presencial sale más que la online? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Porque los cupos presenciales son pocos y de a uno por vez, e incluyen todos los materiales y juegos físicos. La clase online tiene mucha más disponibilidad horaria. La enseñanza es la misma en las dos: lo que cambia es el cupo y los materiales.</p></div>
+        <div class="faq-a"><p>Porque incluye materiales y juegos físicos, y los cupos presenciales son limitados. La enseñanza es la misma en las dos modalidades.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Me pueden aumentar el precio a mitad de camino? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Contratando el trimestre, no: el valor de la clase queda congelado los tres meses. Mes a mes puede ajustarse, y en ese caso te aviso siempre antes de que empiece el mes nuevo.</p></div>
+        <div class="faq-a"><p>Contratando el trimestre, el valor queda congelado esos tres meses. Si hay un ajuste, te aviso antes de que empiece el mes.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Necesito comprar un libro específico? <span class="faq-icon">+</span></button>
@@ -1266,11 +1330,11 @@
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Cómo se paga el paquete? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>El pago se hace por adelantado, de forma mensual o semanal según el paquete elegido (te confirmo cuál corresponde cuando hablemos). Ese pago anticipado es lo que asegura el cupo.</p></div>
+        <div class="faq-a"><p>Por adelantado, al comienzo de cada mes. El pago es lo que reserva el horario.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Hay descuento por recomendar a otro/a estudiante? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Sí. Si recomendás a otra familia y se inscribe, ustedes dos se llevan una clase gratis cada uno. Prefiero regalar una clase antes que bajar el precio: así el valor de la clase no se mueve.</p></div>
+        <div class="faq-a"><p>Sí. Si recomendás a otra familia y empieza su plan mensual, tu hijo/a recibe una clase individual gratis el mes siguiente.</p></div>
       </div>
     </div>
   </div>
@@ -1454,32 +1518,27 @@
       });
   });
 
-  // Scroll reveal: animación sutil al entrar en pantalla
-  const revealSelectors = '.track-card, .price-card, .section-head, .photo-frame, .hero-illustration, .free-banner, .sibling-promo, .contact-side-card, form, .credentials-marquee, .testimonial-card, .school-support-card, .extra-chip';
-  const revealEls = document.querySelectorAll(revealSelectors);
-  revealEls.forEach((el, i)=>{
-    el.classList.add('reveal');
-    el.style.transitionDelay = (i % 4) * 80 + 'ms';
-  });
-  const revealObserver = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
+  // Scroll reveal: solo tarjetas; escalonado entre hermanas y sin pisar las transiciones de hover
+  const revealSelectors = '.track-card, .plan-card, .photo-frame, .hero-illustration, .free-banner, .lever, .testimonial-card, .school-support-card, .extra-chip';
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = [...document.querySelectorAll(revealSelectors)];
+  if (!reduceMotion && 'IntersectionObserver' in window){
+    revealEls.forEach(el=>{
+      const sibs = [...el.parentElement.children].filter(c=>c.matches(revealSelectors));
+      el.style.setProperty('--rd', Math.min(sibs.indexOf(el), 3) * 70 + 'ms');
+      el.classList.add('reveal');
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-  revealEls.forEach(el => revealObserver.observe(el));
-
-  // Parallax sutil de los blobs del hero al scrollear
-  const heroBlobs = document.querySelectorAll('.hero .hero-blob');
-  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    window.addEventListener('scroll', ()=>{
-      const y = window.scrollY;
-      heroBlobs.forEach((blob, i)=>{
-        blob.style.transform = `translateY(${y * (0.12 + i*0.06)}px)`;
+    const revealObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+        const el = entry.target;
+        el.classList.add('visible');
+        revealObserver.unobserve(el);
+        // al terminar, devolvemos el elemento a su estado normal (hover sin demoras)
+        setTimeout(()=>{ el.classList.remove('reveal','visible'); el.style.removeProperty('--rd'); }, 900);
       });
-    }, { passive: true });
+    }, { threshold: 0, rootMargin: '0px 0px -6% 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
   }
 
   // Toggle "Qué incluye" en las tarjetas de tracks (tap en mobile, hover ya cubierto por CSS en desktop)
